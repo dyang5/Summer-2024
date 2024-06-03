@@ -1,0 +1,145 @@
+\textit{Helpful Resources for Schubert Calculus include} 
+\href{https://icerm.brown.edu/materials/Slides/sp-s13-off_weeks/Schubert_varieties_and_Schubert_calculus_%5D_Sara_Billey,_University_of_Washington.pdf)}{Sara Billey's ICERM Slides}, \textit{Quang Dao's Schubert Calculus Minicourses (
+\href{https://quangvdao.github.io/schubert-calculus-minicourse/day1.pdf}{Day 1} and 
+\href{https://quangvdao.github.io/schubert-calculus-minicourse/day2.pdf}{Day 2})}.
+
+\begin{itemize}
+    \item \textit{Question 5: } Consider $\mathbb{P}^3$. 
+
+    \begin{enumerate}[a)]
+        \item List the Schubert classes in $G(2, 4)$.
+
+        \begin{tabular}{c | c | c | c | c | L}
+        $j$ & Matrix & codimension & $a$ & $\lambda$ & geometric Schubert condition\\ \hline   
+        
+        \rule{0pt}{4ex}    
+
+        (1, 2) & $\begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0
+        \end{bmatrix}$ & 4 & $\{0, 0\}$ & $\{2, 2\}$ & plane spanning $(1, 0, 0, 0), (0, 1, 0, 0)$ \\ \hline    
+        \rule{0pt}{4ex}    
+
+        (1, 3) & $\begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \ast & 1 & 0
+        \end{bmatrix}$ & 3 & $\{0, 1\}$ & $\{2, 1\}$ & plane spanning $(1, 0, 0, 0), (0, \ast, 1, 0)$ \\ \hline \rule{0pt}{4ex}    
+
+        (1, 4) & $\begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \ast & \ast & 1
+        \end{bmatrix}$ & 2 & $\{0, 2\}$ & $\{2, 0\}$ & plane spanning $(1, 0, 0, 0), (0, \ast, \ast, 1)$ \\ \hline \rule{0pt}{4ex}    
+
+        (2, 3) & $\begin{bmatrix}
+        \ast & 1 & 0 & 0 \\
+        \ast & 0 & 1 & 0
+        \end{bmatrix}$ & 2 & $\{1, 1\}$ & $\{1, 1\}$ & plane spanning $(\ast, 1, 0, 0), (\ast, 0, 1, 0)$ \\ \hline \rule{0pt}{4ex}    
+
+        (2, 4) & $\begin{bmatrix}
+        \ast & 1 & 0 & 0 \\
+        \ast & 0 & \ast & 1
+        \end{bmatrix}$ & 1 & $\{2, 1\}$ & $\{1, 0\}$ & plane spanning $(\ast, 1, 0, 0), (\ast, 0, \ast, 1)$ \textcolor{red}{\textbf{(meeting a line in $\mathbb{P}^3$)}} \\ \hline \rule{0pt}{4ex}    
+
+        (3, 4) & $\begin{bmatrix}
+        \ast & \ast & 1 & 0 \\
+        \ast & \ast & 0 & 1
+        \end{bmatrix}$ & 0 & $\{2, 2\}$ & $\{0\}$ & plane spanning $(\ast, \ast, 1, 0), (\ast, \ast, 0, 1)$ 
+        (equivalent to no condition)
+
+        \end{tabular}
+
+        To determine each of the entries, we can follow the criterion below:
+        \begin{itemize}
+            \item codimension: sum of boxes in partition, also $n$ minus the number of free entries for $G(k, n)$
+            \item matrix: $1$'s in each row at the $j$ positions, $0$'s to the right and under each $1$. all other entries are free.
+            \item $a$: number of nonzero entries to the left of each pivot in matrix
+            \item $\lambda$: number of zeros to the right of each pivot minus the number of pivots below (representing how many more intersections ``do we expect'')
+            \item geometric Schubert condition: span of the rows. equivalently, follow geometric conditions below (dimensions of intersections).
+        \end{itemize}
+        Another way to understand the $j$ entry can be to think of a path that consists of two horizontal and two vertical moves on a $2 \times 2$ grid. The $j$ entry corresponds to which of the four moves are the horizontal ones, and the partition of the grid that is traced out above the path corresponds to the $\lambda$ partition. \\
+
+        For a general plane $\Gamma$ in $\mathbb{P}^3$, we expect $\mathrm{dim} (\Gamma \cap F_1) = 0$, $\mathrm{dim} (\Gamma \cap F_2) = 1$, $\mathrm{dim} (\Gamma \cap F_3) = 1$, and $\mathrm{dim} (\Gamma \cap F_4) = 2$. \\
+
+        Note that the cell $\mathcal{C}_{(2, 4)}$ is equivalent to the condition that $\mathrm{dim}(\Gamma \cap F_2) \geq 1$ in $\mathbb{C}^4$, which is precisely the condition for meeting a line in $\mathbb{P}^3$. \\
+
+        As a specific example, consider $\mathcal{C}_{(2, 3)}$, which has representative matrix $\begin{bmatrix}
+        \ast & 1 & 0 & 0 \\
+        \ast & 0 & 1 & 0
+        \end{bmatrix}$. Note that this entry corresponds to planes in $\mathbb{P}^3$ satisfying 
+        \[
+            \mathrm{dim} (\Gamma \cap F_2) \geq 1 \text{ and } \mathrm{dim} (\Gamma \cap F_3) \geq 2, 
+        \] 
+
+        where $\mathrm{dim} (\Gamma \cap F_2) \geq 1 = 0 + 1$ and $\mathrm{dim} (\Gamma \cap F_3) \geq 2 = 1 + 1$ (corresponding to the fact that $\mathcal{C}_{(2, 3)}$ has partition $(1, 1)$. 
+        
+        \item Multiplication Table for $H^*(G(2, 4))$. \\
+
+        \begin{center}
+        \begin{tabular}{c | c | c | c | c | c | c}
+            & $\mathcal{C}_{(1, 2)}$ & $\mathcal{C}_{(1, 3)}$ & $\mathcal{C}_{(1, 4)}$ & $\mathcal{C}_{(2, 3)}$ & $\mathcal{C}_{(2, 4)}$ & $\mathcal{C}_{(3, 4)}$ \\ \hline
+            
+            $\mathcal{C}_{(1, 2)}$ & 0 & 0 & 0 & 0 & 0 & $\mathcal{C}_{(3, 4)}$ \\ \hline
+
+            $\mathcal{C}_{(1, 3)}$ & 0 & 0 & 0 & 0 & 0 & $\mathcal{C}_{(1, 3)}$ \\ \hline
+            
+            $\mathcal{C}_{(1, 4)}$ & 0 & 0 & $\mathcal{C}_{(1, 2)}$ & 0 & 0 & $\mathcal{C}_{(1, 4)}$ \\ \hline
+
+            $\mathcal{C}_{(2, 3)}$ & 0 & 0 & 0 & $\mathcal{C}_{(1, 2)}$ & $\mathcal{C}_{(1, 3)}$ & $\mathcal{C}_{(2, 3)}$ \\ \hline
+            
+            $\mathcal{C}_{(2, 4)}$ & 0 & 0 & $\mathcal{C}_{(1, 3)}$ & $\mathcal{C}_{(1, 3)}$ & $\mathcal{C}_{(1, 4)} +\mathcal{C}_{(2, 3)}$ & $\mathcal{C}_{(2, 4)}$ \\ \hline
+
+            $\mathcal{C}_{(3, 4)}$ &$\mathcal{C}_{(1, 2)}$ & $\mathcal{C}_{(1, 3)}$ & $\mathcal{C}_{(1, 4)}$ & $\mathcal{C}_{(2, 3)}$ & $\mathcal{C}_{(2, 4)}$ & $\mathcal{C}_{(3, 4)}$ \\ \hline
+        \end{tabular}
+        \end{center}
+
+        Note that multiplication in the cohomology can be done by geometric interpretation and by algebraic and combinatorial methods. For the latter approach, consider the example of $\mathcal{C}_{(2, 4)} \ast \mathcal{C}_{(2, 4)}$. Since the partition corresponding to $\mathcal{C}_{(2, 4)}$ is $\{1, 0\}$, we can consider the Schur polynomial $s_1$. The product $\mathcal{C}_{(2, 4)} \ast \mathcal{C}_{(2, 4)}$ is synonymous with $s_1 \ast s_1 = s_2 + s_{1, 1}$ (by Pieri), which corresponds to $\mathcal{C}_{(1, 4)} + \mathcal{C}_{(2, 3)}$. \\
+
+        As a more advanced example, consider $\mathcal{C}_{(1, 2)} \ast \mathcal{C}_{(1, 2)}$, corresponding to the product $s_{2, 2} \ast s_{2, 2}$. Since
+
+        \[
+            s_{2, 2} \ast s_{2, 2} = s_{3, 2, 2, 1} + s_{4, 4} + s_{4, 2, 2} + s_{3, 3, 1, 1} + s_{2, 2, 2, 2} + s_{4, 3, 1}
+        \]
+        and each of the Schur polynomials correspond to partitions that do not fit in a $2 \times (4-2) = 2 \times 2$ rectangle, the product is simply $0$. \\
+
+        \item Addressing Hilbert's question: how many lines meet four lines in $\mathbb{P}^3$ using schubert calculus
+        
+        The main idea is that the ``and" condition corresponds to multiplication in the cohomology. Since the Schubert cell corresponding to meeting a line is $\mathcal{C}_{(2, 4)}$, which we can represent using the class $\sigma_1$, the condition of meeting four lines is $\sigma_1^4$. Note that
+        \[
+            \sigma_1^4 = (\sigma_1^2)^2 = (\sigma_{2, 0} + \sigma_{1, 1})^2 = 2\sigma_{2, 2}.
+        \]
+        \textit{(In general, to calculate some value corresponding to a condition in $G(k, n)$, we consider the coefficient of the full rectangle $\sigma_{k, n-k}$.) } \\
+
+        There are $\boxed{2 \text{ lines meeting four lines in }\mathbb{P}^3 }$.
+        
+        
+    \end{enumerate}
+    \item \textit{Question 7: } Determine conditions of $\lambda$, $\mu$ so that $\Omega_\lambda(F_\bullet) \cap \Omega_\mu(G_\bullet) = \emptyset$ (these are Schubert varieties).
+    \begin{proof}
+        Done with help from \href{https://quangvdao.github.io/schubert-calculus-minicourse/day2.pdf}{this powerpoint}, and lemma 3 on pg 148. 
+
+        Let $U \in \Omega_\lambda(F_\bullet)$ and $U \in \Omega_\mu(G_\bullet)$. We reduce to the case of transverse flags $F$ and $\Tilde{F}$ (I don't super know why we can do this, but I think I believe we can). Then, from our definitions, we know:
+        \begin{equation*}
+            dim(U\cap F_{n+i-\lambda_i}) \geq i, 1 \leq i \leq r
+        \end{equation*}
+        \begin{equation*}
+            dim(U\cap \Tilde{F}_{n+i-\mu_i}) \geq i, 1 \leq i \leq r
+        \end{equation*}
+
+        Then, we take condition 1 for $i$ and condition 2 for $r+1 - i$, such that:
+        \begin{equation*}
+            dim(U\cap F_{n+i-\lambda_i}) + dim(U\cap \Tilde{F}_{n+r+1-i-\mu_i}) \geq r+1-i
+        \end{equation*}
+        Since $U$ has dimension $r$ and $i + (r+1-i) - r = 1$, the intersection $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ has dimension at least 1. 
+        
+        \ldots I don't know quite how to prove the converse here, but I think for our intersection to be empty, there must exist some $i$ for which $\lambda_i + \mu_{r+1-i} > n$.  I assume the converse proof goes something like this . . . choose some $i$ for which $\lambda_i + \mu_{r+1-i}>n$. By exercise 14, $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ is spanned by the vectors $e_j$ such that:
+        \begin{equation*}
+            i + \mu_{r+1 - i} \leq j \leq n+i-\lambda_i
+        \end{equation*}
+        But, by our condition, $-n + \lambda_i > -\mu_{r+1-i}$, and $n - \lambda_i < \mu_{r+1-i}$, such that no values of $j$ exist. So $C_i$ is spanned by \ldots no vectors! and is empty. Yay! Then there's some value of $i$ such that our two subspaces don't intersect. I guess I can believe this means they don't intersect at all? Because if they intersect in big dimensions, they must intersect in smaller dimensions and vice versa.
+    \end{proof}
+        To summarize, my condition is there exists an $i$ for which $\lambda_i + \mu_{r+1-i} > n$. \\
+
+    \textit{-Question 7b: }If $|\lambda| + |\mu| \geq k(n-k)$, find $\sigma_\lambda \cdot \sigma_\mu$.
+
+    $\sigma_\lambda \cdot \sigma_\mu = 0$ if $|\lambda| + |\mu| > k(n-k)$, and the coefficient is $1$ if and only if $\lambda$ and $\mu$ are complementary partitions.
+\end{itemize}
