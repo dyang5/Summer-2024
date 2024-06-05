@@ -12,6 +12,12 @@
 \usepackage[capitalize,nameinlink]{cleveref}
 \usepackage{thmtools}
 \usepackage[framemethod=TikZ]{mdframed}
+\usepackage{setspace} % for \onehalfspacing and \singlespacing macros
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\par\singlespacing\small}
+
+
 \hypersetup{
    urlcolor=blue,
    urlbordercolor=blue,
