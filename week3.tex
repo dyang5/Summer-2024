@@ -12,6 +12,11 @@ Tuesday, June 4th
     \item Started working through potential projects warmup problems, including quantum Schubert polynomials and reading through Buch (Quantum Homology)
 \end{itemize}
 
+Wednesday, June 5th
+\begin{itemize}
+    \item Working on warmup problem exercise. Tried Quantum schubert multiplication with Quantum Pieri (not much success), found answer using Quantum Monk (need to check by hand)
+    \item Reading Buch and Lenart-Maeno articles
+\end{itemize}
 \subsection{Points of Dicussion for June 4th, Tuesday Meeting}
 
 \begin{itemize}
@@ -20,6 +25,7 @@ Tuesday, June 4th
     \item For project 2: Which properties are we looking to preserve under the essential set analog?
 \end{itemize}
 
+\subsubsection{Reconciling (some) Schubert polynomials with Schurs}
 When we refer to the complete flag manifold $Fl(1, 2, 3, 4)$, observe that the Schubert polynomials correspond to permutations of $S_4$, and so $S_4$ is in some sense the basis for the flag manifold:
 \[
     Fl(1, 2, 3, 4) \leftrightarrow S_4
@@ -30,8 +36,25 @@ In general, for a flag manifold $Fl(n_1, n_2, \dots, n)$, we find that the ``bas
 \]
 
 Take the specific case of $Gr(2, 4) = Fl(2, 4)$. The basis corresponds to permutations 
-$w \in S_4 \mid w \text{ has descent possibly at $2$}$; the permutations in said basis are simply $[1\, 2 \mid 3 \,4]$, $[1 3 \mid 2 4]$, $[1\, 3 \mid 2\,4]$, $[1\,4 \mid 2\,3]$, $[2\,3 \mid 1\,4]$, $[2\,4 \mid 1\,3]$, and $[3\,4 \mid 1\,2]$. \\
+$w \in S_4 \mid w \text{ has descent possibly at $2$}$; the permutations in said basis are simply $[1\, 2 \mid 3 \,4]$, $[1\,3 \mid 2\,4]$, $[1\, 3 \mid 2\,4]$, $[1\,4 \mid 2\,3]$, $[2\,3 \mid 1\,4]$, $[2\,4 \mid 1\,3]$, and $[3\,4 \mid 1\,2]$. \\
 
 There is an association between the Schubert polynomials corresponding to each of these permutations and an associated Schur polynomial, characterized by the following rule: let $w = w_1 w_2 \dots w_n$. 
-\textit{if $w_i < w_{i+1}$ for all $i \neq r$ (i.e. there is just one descent at index $r$), $\mathfrak{S}_w$ is the Schur polynomial $s_\lambda(x_1, \dots, x_r)$, where $\lambda = (w_r - r, \dots, w_2 - 2, w_1 - 1)$.}
+\begin{quote}
+\textit{If $w_i < w_{i+1}$ for all $i \neq r$ (i.e. there is just one descent at index $r$), $\mathfrak{S}_w$ is the Schur polynomial $s_\lambda(x_1, \dots, x_r)$, where $\lambda = (w_r - r, \dots, w_2 - 2, w_1 - 1)$.}
+\end{quote}
+
+The above rule is extremely useful for identifying Schuberts as Schurs. For example, consider the Schubert polynomial corresponding to the permutation $[2\,4 \mid 1\,3]$. There is a descent at index $2$, and so $\lambda = (w_2 - 2, w_1 - 1) = (4 - 2, 2 - 1) = (2, 1)$ and
+\[
+    \mathfrak{S}_{[2\,4 \mid 1\,3]} = s_{(2, 1)}(x_1, x_2).
+\]
+
+The same rule applies for other permutations with one descent. For example, 
+\[
+    \mathfrak{S}_{[2 \mid 1\,3\,4]} = s_{(1)}(x_1).
+\]
+In particular, the rule also helps us realize that all Schur polynomials (of a finite number of variables) are Schubert polynomials; any Schur can be reconciled with a given permutation with one descent, which corresponds to a Schubert polynomial. \\
+
+\textit{Additional Info: Schubert polynomials can be realized through pipe dreams or rc-graphs, perhaps a topic for further reading.}
+
+\subsubsection{Bases for $H^* Fl(n)$ and Intro to Quantum Cohomology}
 

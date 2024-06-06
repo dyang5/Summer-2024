@@ -1,2 +1,50 @@
 \textit{Helpful Resources for Schubert polynomial calculations include}
-\href{https://www.math.ucdavis.edu/~webfiles/undergrad_thesis/202003_Yuze_Luan_Carlsson_Thesis.pdf}{\textit{Yuze Luan's thesis}} and \href{https://doc.sagemath.org/html/en/reference/combinat/sage/combinat/schubert_polynomial.html}{\textit{Sage code for Schubert polynomials}}.
+\href{https://www.math.ucdavis.edu/~webfiles/undergrad_thesis/202003_Yuze_Luan_Carlsson_Thesis.pdf}{\textit{Yuze Luan's thesis}} and \href{https://doc.sagemath.org/html/en/reference/combinat/sage/combinat/schubert_polynomial.html}{\textit{Sage code for Schubert polynomials}}. \\
+
+Related to project 1: \href{https://arxiv.org/pdf/2211.01578}{Pieri Multiplication for Quantum Grothendieck Polynomials (full flag)} \\
+
+\begin{theorem*}[Quantum Monk, from \href{https://math.mit.edu/~apost/talks/qschub-slides.pdf}{Postnikov}]
+Let $t_{ab}$ be the transposition of positions $a$ and $b$.
+    \[
+        \mathfrak{S}_{s_r}^q \mathfrak{S}_{w}^q = \sum \mathfrak{S}_{wt_{ab}}^q + \sum q_c q_{c+1} \dots q_{b-1}\mathfrak{S}_{wt_{cd}}^q
+    \]
+    where the first sum is over $a \leq r < b$ such that $l(wt_{ab}) = l(w) + 1$ and the second sum is over $c \leq r < d$ such that $l(wt_{cd}) = l(w) - l(t_{cd})$.
+\end{theorem*}
+
+
+\begin{eg}[Sheet 3, Problem 3(c) for Quantum Schuberts]
+Consider $\mathfrak{S}^q_{s_1} \ast \mathfrak{S}^q_{s_2}$ in $Fl(4)$. Since $\mathfrak{S}^q_{s_1} = \mathfrak{S}_{s_1} = X_1$ and $\mathfrak{S}^q_{s_2} = \mathfrak{S}_{s_2} = X_1 + X_2$, we have that
+\[
+    \mathfrak{S}^q_{s_1} \ast \mathfrak{S}^q_{s_2} = X_1(X_1 + X_2) = X_1^2 + X_1X_2.
+\]
+
+To express this in the quantum Schubert basis, observe that since $\mathfrak{S}_{[3\,1\,2\,4]} = X_1^2 = e_1(1)e_1(2) - e_2(2)$, we should have that
+
+\begin{align*}
+\mathfrak{S}^q_{[3\,1\,2\,4]} = X_1^2 &= e^q_1(1)e^q_1(2) - e^q_2(2) \\
+&= X_1(X_1 + X_2) - (X_1X_2 + q_1).
+\end{align*}
+
+On the other hand, since $\mathfrak{S}_{[2\,3\,1\,4]} = X_1X_2 = e_2(2)$, we should have that
+\begin{align*}
+    \mathfrak{S}^q_{[2\,3\,1\,4]} &= e^q_2(2) \\
+    &= X_1X_2 + q_1.
+\end{align*}
+
+Summing these two quantum Schubert polynomials, we see that
+\[
+    \boxed{\mathfrak{S}^q_{s_1} \ast \mathfrak{S}^q_{s_2} = \mathfrak{S}^q_{[3\,1\,2\,4]} + \mathfrak{S}^q_{[2\,3\,1\,4]}}.
+\]
+
+This matches the result from the Quantum Monk formula -- note that if $w = s_2 = [1\,3\,2\,4]$, then $wt_{12} = [3\,1\,2\,4]$ has length $2$, as does $wt_{13} = [2\,3\,1\,4]$ (they both correspond to terms from the first sum).
+\end{eg}
+
+
+\textbf{Exercises (sheet 3 problem 3c): $\mathfrak{S}_{s_1}^q \cdot \mathfrak{S}_{1324}^q$}
+
+First sum: $a = 1$, $b = 2, 3, 4$. Using sage, I confirmed (1,2) works, (1,3) works, and (1,4) does NOT work.
+
+So we take $\mathfrak{S}_{3124}^q + \mathfrak{S}_{2314}^q$. 
+Second sum: (c,d) = (1,2), (1,3), (1,4). None of these fit the requirements.
+
+

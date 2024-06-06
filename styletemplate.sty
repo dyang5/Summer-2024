@@ -1,0 +1,280 @@
+% Template adapted from (main) Pingbang Hu, Evan Chen, and Amy Feng
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styletemplate}
+\usepackage{setspace} % for \onehalfspacing and \singlespacing macros
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\par\singlespacing\small}
+
+\usepackage{amsmath,amssymb,latexsym,amsfonts,amscd,amsthm,framed,dsfont,fullpage,appendix}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[mathscr]{euscript}
+\setlength\parindent{0pt}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=violet]{hyperref}
+\usepackage[capitalize,nameinlink]{cleveref}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{scrextend}
+\usepackage{array}
+\hypersetup{
+   urlcolor=blue,
+   urlbordercolor=blue,
+   pdfborder={1 1 1},
+   pdfborderstyle={/S/U/W 1}   
+}
+
+\newcommand{\nc}{\newcommand}
+\nc{\nt}{\newtheorem}
+\nc{\on}{\operatorname}
+\renewcommand{\thesubsection}{\arabic{section}}
+\newcolumntype{L}{>{\centering\arraybackslash}m{5cm}}
+
+% theorems
+\makeatother
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\mdfsetup{skipabove=1em,skipbelow=0em}
+
+\theoremstyle{definition}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt, skipabove=8pt,
+            rightline=false, leftline = true, topline=false, bottomline=false,
+            linecolor=ForestGreen, backgroundcolor=ForestGreen!5,
+            nobreak=false
+        },
+    headpunct={\\[3pt]}
+
+]{thmgreenbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=ForestGreen, backgroundcolor=ForestGreen!8,
+            nobreak=false
+        }
+]{thmgreen2box}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Blue!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=Blue, backgroundcolor=Blue!5,
+            nobreak=false
+        }
+]{thmbluebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{TealBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=TealBlue,
+            nobreak=false
+        }
+]{thmblueline}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{RawSienna!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=RawSienna, backgroundcolor=RawSienna!5,
+            nobreak=false
+        }
+]{thmredbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{RawSienna!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=RawSienna, backgroundcolor=RawSienna!8,
+            nobreak=false
+        }
+]{thmred2box}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{OliveGreen!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=OliveGreen, backgroundcolor=OliveGreen!2,
+            nobreak=false
+        }
+]{thmgreen3box}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{WildStrawberry!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=WildStrawberry, backgroundcolor=WildStrawberry!5,
+            nobreak=false
+        }
+]{thmpinkbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{MidnightBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=MidnightBlue, backgroundcolor=MidnightBlue!5,
+            nobreak=false
+        }
+]{thmblue2box}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Gray!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=Gray, backgroundcolor=Gray!5,
+            nobreak=false
+        }
+]{notgraybox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Gray!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=Gray,
+            nobreak=false
+        }
+]{notgrayline}
+
+% \declaretheoremstyle[
+% 	headfont=\bfseries\sffamily\color{RawSienna!70!black}, bodyfont=\normalfont,
+% 	numbered=no,
+% 	mdframed={
+% 			linewidth=2pt,
+% 			rightline=false, topline=false, bottomline=false,
+% 			linecolor=RawSienna, backgroundcolor=RawSienna!1,
+% 		},
+% 	qed=\qedsymbol
+% ]{thmproofbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Blue!70!black}, bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=Blue, backgroundcolor=Blue!1,
+            nobreak=false
+        }
+]{thmexplanationbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{WildStrawberry!70!black}, bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=WildStrawberry, backgroundcolor=WildStrawberry!1,
+            nobreak=false
+        }
+]{thmanswerbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Violet!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=Violet, backgroundcolor=Violet!1,
+            nobreak=false
+        }
+]{conjpurplebox}
+
+
+\declaretheorem[style=thmgreenbox, name=Definition, numberwithin=subsection]{definition}
+\declaretheorem[style=thmgreen2box, name=Definition, numbered=no]{definition*}
+\declaretheorem[style=thmbluebox, name=Theorem, numberwithin=subsection]{theorem}
+\declaretheorem[style=thmbluebox, name=Theorem, numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox, name=Lemma, numberwithin=subsection, sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox, name=Lemma, numbered=no]{lemma*}
+
+\declaretheorem[style=thmbluebox, name=Proposition, numberwithin=section]{proposition}
+\declaretheorem[style=thmbluebox, name=Corollary, numberwithin=subsection, sibling = theorem]{corollary}
+\declaretheorem[style=thmpinkbox, name=Problem, numberwithin=section]{problem}
+\declaretheorem[style=thmpinkbox, name=Problem, numbered=no]{problem*}
+\declaretheorem[style=thmred2box, name=Claim, numbered=no]{claim}
+\declaretheorem[style=conjpurplebox, name=Conjecture, numberwithin=section]{conjecture}
+
+% Redefine proof environment to get a full control. 
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep-2\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+                \color{NavyBlue!70!black}\sffamily\bfseries
+                #1\@addpunct{.}]
+    \begin{mdframed}[linewidth=2pt,rightline=false, topline=false, bottomline=false,linecolor=NavyBlue, backgroundcolor=NavyBlue!1]
+        }{
+        \popQED\endtrivlist\@endpefalse
+    \end{mdframed}}
+\makeatother
+
+\declaretheorem[style=thmredbox, numbered=no, name=Example]{eg}
+\declaretheorem[style=thmexplanationbox, numbered=no, name=Proof]{tmpexplanation}
+\newenvironment{explanation}[1][]{\vspace{-10pt}\pushQED{\(\circledast\)}\begin{tmpexplanation}}{\null\hfill\popQED\end{tmpexplanation}}
+
+\declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
+\declaretheorem[style=thmredbox, numbered=no, name=Note]{note}
+\declaretheorem[style=thmpinkbox, numbered=no, name=Exercise]{exercise}
+\declaretheorem[style=notgrayline, numbered=no, name=As previously seen]{prev}
+\declaretheorem[style=thmgreen3box, numbered=no, name=Intuition]{intuition}
+\declaretheorem[style=notgraybox, numbered=no, name=Notation]{notation}
+\declaretheorem[style=thmanswerbox, numbered=no, name=Answer]{tmpanswer}
+\newenvironment{answer}[1][]{\vspace{-10pt}\pushQED{\(\circledast\)}\begin{tmpanswer}}{\null\hfill\popQED\end{tmpanswer}}
+
+\nc{\C}{\mathbb{C}}
+\nc{\F}{\mathbb{F}}
+\nc{\Q}{\mathbb{Q}}
+\nc{\Z}{\mathbb{Z}}
+\nc{\R}{\mathbb{R}}
+\nc{\N}{\mathbb{N}}
+\nc{\bP}{\mathbb{P}}
+\nc{\CP}{\mathbb{C}\mathbb{P}}
+
+% \nc\size[1]{\left|#1\right|} % cardinality
+\nc{\la}{\langle}
+\nc{\ra}{\rangle}
+
+\nc{\Hom}{\on{Hom}}
+\nc{\End}{\on{End}}
+\nc{\ch}{\on{char}}
+\nc{\gim}{\on{gim}}
+\nc{\Ima}{\on{im}}
+\nc{\kernel}{\on{ker}}
+\nc{\gker}{\on{gker}}
+\nc{\rank}{\on{rank}}
+\nc{\spn}{\on{span}}
+\nc{\sym}{\on{Sym}}
+\nc{\tr}{\on{tr}}
+\nc{\Stab}{\on{Stab}}
+
+\nc{\ot}{\otimes}
+\nc{\op}{\oplus}
+\nc{\CO}{\mathcal{O}}
+\nc{\CC}{\mathcal{C}}
+\nc{\stwo}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+
+\usepackage{pgffor}%
+\newcommand{\chapter}[2]{%
+    \foreach \c in {#1,...,#2}{%
+            \IfFileExists{Notes/chapter\c.tex} {%
+                \input{Notes/chapter\c.tex}%
+            }{}%
+        }%
+}
