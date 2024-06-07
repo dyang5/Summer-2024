@@ -17,13 +17,32 @@ Wednesday, June 5th
     \item Working on warmup problem exercise. Tried Quantum schubert multiplication with Quantum Pieri (not much success), found answer using Quantum Monk (need to check by hand)
     \item Reading Buch and Lenart-Maeno articles
 \end{itemize}
-\subsection{Points of Dicussion for June 4th, Tuesday Meeting}
+
+Thursday, June 6th
+\begin{itemize}
+    \item Continue working on warmup problem exercise. Finalized Quantum Monk calculations for Sheet 3 Quantum Schubert cases
+    \item Learned more about Grothendieck and quantum Grothendieck polynomials
+    \item Begin working on project 2 problems (Chen, Tymoczko and LLMS as resources)
+    \item Zoe and David met in the afternoon to discuss progress
+\end{itemize}
+
+\subsection{Points of Discussion for June 4th, Tuesday Meeting}
 
 \begin{itemize}
     \item How can we determine a basis of Schubert polynomials for a general flag manifold?
     \item How can we reconcile the Schubert polynomials with the Schurs (which permutations correspond to which partitions)?
     \item For project 2: Which properties are we looking to preserve under the essential set analog?
 \end{itemize}
+
+\subsection{Points of Discussion for June 7th, Friday Meeting}
+
+\begin{itemize}
+    \item Regarding quantum Grothendieck polynomials, what is a $k$-Bruhat graph? Is this a nicer way to understand condition 3 from Lenart and Maeno? (which conditions correspond to partial flag, which ones correspond to quantum, which ones correspond to Monk vs. Pieri)
+    \item How can we understanding Grothendieck and quantum Grothendieck polynomials? Do they have nice definitions like Schuberts ($\beta$ term)
+    \item Discussion of Quantum Monk vs. Quantum Pieri and associated conditions for full flag (Buch page 6)
+
+\end{itemize}
+
 
 \subsubsection{Reconciling (some) Schubert polynomials with Schurs}
 When we refer to the complete flag manifold $Fl(1, 2, 3, 4)$, observe that the Schubert polynomials correspond to permutations of $S_4$, and so $S_4$ is in some sense the basis for the flag manifold:
@@ -57,4 +76,79 @@ In particular, the rule also helps us realize that all Schur polynomials (of a f
 \textit{Additional Info: Schubert polynomials can be realized through pipe dreams or rc-graphs, perhaps a topic for further reading.}
 
 \subsubsection{Bases for $H^* Fl(n)$ and Intro to Quantum Cohomology}
+
+One basis for the cohomology ring $H^* Fl(n)$ is the set of Schubert polynomials corresponding to each permutation in $S_n$, or
+\[
+    \{ \mathfrak{S}_w(x_1, \dots, x_n) \mid w \in S_n \}.
+\]
+
+The set of Schubert polynomials is a positive basis; indeed, the Littlewood-Richardson Rule for Schur polynomials generalizes to Schuberts, and we have
+\[
+    \mathfrak{S}_u \mathfrak{S}_v = \sum_{w} c_{uv}^w \mathfrak{S}_w
+\]
+where each $c_{uv}^w$ is a unique (because the Schuberts are a basis) nonnegative coefficient. \\
+
+Another well-known basis is known as the \textbf{standard elementary monomials}, of the form
+\[
+    \{e_{i_1}(1) \cdots e_{i_{n-1}}(n-1) \mid 0 \leq i_k \leq k \}
+\]
+where each $e_k(p)$ corresponds to the elementary symmetric polynomial of degree $k$ in $p$ variables $x_1, \dots, x_p$. Contrary to the previous Schubert basis, this is not a positive basis. For example, consider $Fl(3)$ and the product $e_1(1) \cdot e_1(1).$ We have that
+\begin{align*}
+    e_1(1) \cdot e_1(1) &= X_1^2 \\
+    &= X_1(X_1 + X_2) - X_1X_2 \\
+    &= e_1(1)e_1(2) - e_2(2).
+\end{align*}
+
+Note that each of these bases has precisely $n!$ entries, a defining characteristic for the bases of a complete flag manifold.
+
+\textcolor{red}{[Discuss Quantum Schubert polynomials]}
+
+\subsection{Quantum Grothendieck Polynomials}
+
+\begin{definition}[Grothendieck Polynomials]
+Let $\delta_i = \frac{f - s_i(f)}{x_i - x_{i+1}}$ be the difference operator, and $\pi_i = \delta_i(1-x_{i+1})$. 
+
+Then, the Grothendieck polynomials are defined as:
+\begin{align*}
+    \mathfrak{G}_w(x_1, x_2, \ldots, x_n) &= \pi_{w^{-1}w_0}(x_1^{n-1} x_2^{n-2} \ldots x_{n-1}) 
+\end{align*}
+\end{definition}
+I think some people have figured out \href{https://wiki.sagemath.org/combinat/MultivariatePolynomials}{how to compute these in sage}! Trying to figure out how the code works . . . 
+
+Note that the lowest degree homogenous part of $\mathfrak{G}_w$ is given by $\mathfrak{S}_w$. 
+
+\begin{theorem}[Grothendieck Pieri, from Lenart and Maeno]
+    \begin{equation*}
+        \mathfrak{G}_wg_p^k = \sum_\gamma m_p(\gamma) \mathfrak{G}_{\text{end}(\gamma)}
+    \end{equation*} 
+    where the sum is over all $k$-Pieri chain $\gamma$ on the infinite symmetric group that begin at $w$.
+
+    We define $g_p^k = \mathfrak{G}_{c[k,p]} = \sum_{i=p}^k (-1)^{i-p} {{i-1}\choose{p-1}} e_i^k$. We let $\gamma$ denote a $k$-Pieri chain (see definition 2.14), $m_p(\gamma) = (-1)^{l(\gamma) -p}$ times the number of $p$-markings of $\gamma$.
+\end{theorem}
+The $k$-Pieri chain looks complicated — The monk formula covers the case when $p = 1$, and seems much nicer. I think the $k$-Pieri chain is the big (gross) thing that lets you generalize.
+
+\begin{definition}[Grothendieck polynomial]
+    The quantum Grothendieck polynomial $\mathfrak{G}_w^q$, for $w \in S_n$, is:
+    \begin{equation*}
+        \mathfrak{G}_w^q = \hat{Q}(\mathfrak{G}_w) \in \Z[q,x]
+    \end{equation*}
+\end{definition}
+The quantum Grothendieck for $S_3$ are in example 3.19 of Lenart-Maeno. 
+
+A combinatorial formula is given later in the paper.
+
+\begin{theorem}[Quantum Monk for Grothendieck -- theorem 6.4 in LeM]
+
+We have
+\begin{equation*}
+    \G_w^q \G_{s_k}^q = \sum_\pi (-1)^{l(\pi)- 1}q(\pi) \G_{end(\pi)} ; 
+\end{equation*}
+the summation is over all nonempty paths $\pi$ in the quantum $k$-Bruhat graph (of $S^\infty$) of the form 
+\begin{equation*}
+    w = w_0 \rightarrow w_1 \rightarrow \ldots \rightarrow w_s = \text{end}(\pi)
+\end{equation*}
+where $(a_1, b_1) \prec (a_2,b_2) \prec \ldots \prec (a_s,b_s)$.
+\end{theorem}
+
+
 
