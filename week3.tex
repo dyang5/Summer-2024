@@ -26,6 +26,20 @@ Thursday, June 6th
     \item Zoe and David met in the afternoon to discuss progress
 \end{itemize}
 
+Friday, June 7th
+\begin{itemize}
+    \item Learned more about Grothendieck (revisit/understand recursive definition and relation to Schuberts)
+    \item Met with Linda
+    \begin{itemize}
+        \item Talked about quantum Grothendiecks -- everything is still given by quantizing the basis representation (given by definition 3.14 and 3.11 of Lenart Maeno). Way to get the quantization is by unwinding and doing 2-ish recursions, or using the unfriendly f map
+        \item We should work through grothendiecks for $S^3$
+        \item Also this probably isn't that bad to code -- can do this with the F's (Zoe will work on this and Linda will ask around)
+        \item Bruhat graph -- tells you when one permutation is bigger than another. Quantum k-Bruhat order takes the quantum graph as defined and then adds one more condition
+        \item History of project 1: Lenart Maeno define polynomials. Conjectured to be k-theory classes for flag varieties -- for a LONG time, no way to prove if this was or wasn't the case. Recently discovered this was the case, bc no one was sure if these were the right polynomials
+        \item To do: Look at Grothendiecks for grassmannian case (nice combinatorial way, tableaux formula for grassmannian case). Look at quantum grothendiecks for $S^3$. Try to code/algorithm-ize quantum grothendiecks
+    \end{itemize}
+\end{itemize}
+
 \subsection{Points of Discussion for June 4th, Tuesday Meeting}
 
 \begin{itemize}
@@ -38,7 +52,7 @@ Thursday, June 6th
 
 \begin{itemize}
     \item Regarding quantum Grothendieck polynomials, what is a $k$-Bruhat graph? Is this a nicer way to understand condition 3 from Lenart and Maeno? (which conditions correspond to partial flag, which ones correspond to quantum, which ones correspond to Monk vs. Pieri)
-    \item How can we understanding Grothendieck and quantum Grothendieck polynomials? Do they have nice definitions like Schuberts ($\beta$ term)
+    \item How can we understand Grothendieck and (especially) quantum Grothendieck polynomials? 
     \item Discussion of Quantum Monk vs. Quantum Pieri and associated conditions for full flag (Buch page 6)
 
 \end{itemize}
@@ -105,17 +119,30 @@ Note that each of these bases has precisely $n!$ entries, a defining characteris
 
 \subsection{Quantum Grothendieck Polynomials}
 
+Begin with the longest permutation in $S_n$, $w_0 = n \, n-1 \, \dots 1$. The Grothendieck polynomial of $w_0$ is the same as the Schubert polynomial for $w_0$:
+\[
+    \mathfrak{G}_{w_0}(x) = x_1^{n-1} x_2^{n-2} \dots x_{n-1}.
+\]
 \begin{definition}[Grothendieck Polynomials]
 Let $\delta_i = \frac{f - s_i(f)}{x_i - x_{i+1}}$ be the difference operator, and $\pi_i = \delta_i(1-x_{i+1})$. 
 
-Then, the Grothendieck polynomials are defined as:
+The Grothendieck polynomials for $w \in S_n$ is defined as
 \begin{align*}
     \mathfrak{G}_w(x_1, x_2, \ldots, x_n) &= \pi_{w^{-1}w_0}(x_1^{n-1} x_2^{n-2} \ldots x_{n-1}) 
 \end{align*}
 \end{definition}
-I think some people have figured out \href{https://wiki.sagemath.org/combinat/MultivariatePolynomials}{how to compute these in sage}! Trying to figure out how the code works . . . 
 
-Note that the lowest degree homogenous part of $\mathfrak{G}_w$ is given by $\mathfrak{S}_w$. 
+\begin{definition}[Equivalent Formulations of Grothendiecks]
+An analogous divided difference operator is
+$\overline{\delta}_i(f) = \delta_i[(1-x_{i+1})f]$, and the \textbf{Grothendieck polynomial} corresponding to $w \in S_n$ can be found recursively from $\mathfrak{G}_{w_0}$ by the rule
+\[
+    \mathfrak{G}_{ws_i} = \overline{\delta}_i(\mathfrak{G}_w) \text{ if $w(i) > w(i+1)$}
+\]
+\end{definition}
+
+Some code on computing Grothendieck polynomials in Sage: \href{https://wiki.sagemath.org/combinat/MultivariatePolynomials}{how to compute these in sage}!
+
+Note that the lowest degree homogenous part of $\mathfrak{G}_w$ is given by $\mathfrak{S}_w$ (the corresponding Schubert polynomial). 
 
 \begin{theorem}[Grothendieck Pieri, from Lenart and Maeno]
     \begin{equation*}
@@ -127,17 +154,17 @@ Note that the lowest degree homogenous part of $\mathfrak{G}_w$ is given by $\ma
 \end{theorem}
 The $k$-Pieri chain looks complicated — The monk formula covers the case when $p = 1$, and seems much nicer. I think the $k$-Pieri chain is the big (gross) thing that lets you generalize.
 
-\begin{definition}[Grothendieck polynomial]
+\begin{definition}[Quantum Grothendieck polynomial]
     The quantum Grothendieck polynomial $\mathfrak{G}_w^q$, for $w \in S_n$, is:
     \begin{equation*}
         \mathfrak{G}_w^q = \hat{Q}(\mathfrak{G}_w) \in \Z[q,x]
     \end{equation*}
 \end{definition}
-The quantum Grothendieck for $S_3$ are in example 3.19 of Lenart-Maeno. 
+The quantum Grothendiecks for $S_3$ are in example 3.19 of Lenart-Maeno, and a combinatorial formula is given later in the paper.
 
-A combinatorial formula is given later in the paper.
+\href{https://ow3.math.rutgers.edu/~asbuch/equivcalc/}{Maple Package for Quantum Grothendiecks}
 
-\begin{theorem}[Quantum Monk for Grothendieck -- theorem 6.4 in LeM]
+\begin{theorem}[Quantum Monk for Grothendieck -- Theorem 6.4 in LeM]
 
 We have
 \begin{equation*}
