@@ -12,8 +12,22 @@ Tuesday, June 11th
     \item Formalized project direction (work on understanding Quantum Schuberts in partial flags, extend to defining Quantum Grothendiecks in partial flags, Monk formula)
 \end{itemize}
 
+Wednesday, June 12th
+\begin{itemize}
+    \item Typed notes up from yesterday (standard elementary monomials using matrix and Dynkin diagram approaches)
+    \item Continue reading through FGP and Ciochan-Fontanine papers for Quantum Schuberts in partial flags
+\end{itemize}
+
 \subsection{Reconciling Schurs, Schuberts, and Grothendiecks}
 
+Schur polynomials for $Gr(k,n)$ can be written as a sum of monomials corresponding to skew-symmetric Young Tableau on $\lambda$ filled by $1, 2, \dots, k$. \\
 
+Schubert polynomials for $Fl(n)$ can be obtained via divided difference operator, or can be written as a sum of monomials corresponding to reduced pipe dreams/RC-graphs, see \href{https://sites.math.washington.edu/~billey/papers/bjs.pdf}{Billey-Jockusch-Stanley}. \\
 
-\subsection{Quantum Grothendiecks in $S_3$}
+The stable Grothendieck polynomials, a special class of Grothendieck polynomials, for $Gr(k,n)$ can be written as a sum of monomials corresponding to skew-symmetric set-valued tableau on $\lambda$ filled by $1, 2, \dots, k$, see 
+\href{https://sites.math.rutgers.edu/~asbuch/papers/combkth.pdf}{Buch}. The stable Grothendecieks are defined as a limit
+\[ 
+    G_w(x) = \lim\limits_{k \rightarrow \infty}\mathfrak{G}_{1^k \times w}(x) = \lim\limits_{k \rightarrow \infty}\mathfrak{G}_{[1, \, \dots \,, \, k, \, w(1) + k \,, \,w(2) + k \,, \, \dots \,, \,w(n)+ k]}(x).
+\]
+
+Grothendieck polynomials for $Fl(n)$ can be obtained via divided difference operator, and are related to bumpless pipe dreams, see \href{https://www.symmetricfunctions.com/grothendieck.htm}{Symmetric Functions website}.
