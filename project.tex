@@ -38,9 +38,9 @@ When we refer to the complete flag manifold $Fl(1,2,3,4)$, the Schubert polynomi
 \[
     Fl(1, 2, 3, 4) \leftrightarrow S_4
 \]
-In general, for a given flag manifold $Fl(n_1, n_2, \dots, n)$, we find that the basis for the cohomology corresponds to a subset of the Schubert polynomials of $S_n$:
+In general, for a given flag manifold $Fl(d_1, d_2, \dots, d_k)$ with $d_k = n$ we find that the basis for the cohomology corresponds to a subset of the Schubert polynomials of $S_n$:
 \[
-    Fl(n_1, n_2, \dots, n) \leftrightarrow \{\mathfrak{S}_w \in S_n \mid w \text{ has descents } \subseteq \{ n_1, n_2, \dots, n\} \}
+    Fl(d_1, d_2, \dots, d_k) \leftrightarrow \{\mathfrak{S}_w \in S_n \mid w \text{ has descents } \subseteq \{ d_1, d_2, \dots, n\} \}
 \]
 
 Take the specific case of $Gr(2, 4) = Fl(2, 4)$. The basis corresponds to Schubert polynomials of permutations $w \in S_4 \mid w \text{ has descent possibly at $2$}$; the permutations in said basis are Schubert polynomials for $[1\, 2 \mid 3 \,4]$, $[1\,3 \mid 2\,4]$, $[1\, 3 \mid 2\,4]$, $[1\,4 \mid 2\,3]$, $[2\,3 \mid 1\,4]$, $[2\,4 \mid 1\,3]$, and $[3\,4 \mid 1\,2]$. \\
@@ -87,23 +87,7 @@ where each $e_k(p)$ corresponds to the elementary symmetric polynomial of degree
     &= e_1(1)e_1(2) - e_2(2).
 \end{align*}
 
-Note that each of these bases has precisely $n!$ entries, a defining characteristic for the bases of a complete flag manifold. \\
-
-\textbf{\textit{Quantum Schubert polynomials}} arise as ``quantized'' versions of the Schubert polynomials. Consider the Schubert polynomial $\mathfrak{S}_{[3 \, 1 \, 2]}$ in $S_3$. One can find, using the divided difference operator, that $\mathfrak{S}_{[3 \, 1 \, 2]} = x_1^2$ -- from the above example, we know that this can also be rewritten in the standard elementary monomial basis:
-\begin{align*}
-    \mathfrak{S}_{[3 \, 1 \, 2]} &= x_1^2 \\
-    &= e_1(1) e_1(2) - e_2(2).
-\end{align*}
-
-To determine the corresponding quantum Schubert polynomial, we simply replace each of the standard elementary monomials with their quantized versions (represented by capital letters), so
-
-\begin{align*}
-    \mathfrak{S}_{[3 \, 1 \, 2]}^q &= E_1(1) E_1(2) - E_2(2) \\
-    &= x_1(x_1 + x_2) - (x_1x_2 + q_1) \\
-    &= x_1^2 - q_1
-\end{align*}
-
-The quantum Schubert polynomials serve as a basis for the quantum cohomology of $Fl(3)$. \\
+Note that each of these bases has precisely $n!$ entries, a defining characteristic for the bases of a complete flag manifold. 
 
 The quantized standard elementary monomials in both full and partial flag manifolds can be realized from two different methods. We begin with a discussion of the quantized standard elementary monomials in the full flag case. From Fomin-Gelfand-Postnikov (FGP), we can realize the quantized standard elementary monomial through the characteristic polynomial of the matrix
 \[
@@ -162,7 +146,7 @@ In general, recall that the standard elementary monomial $e_i(j)$ represents the
 
 Similarly, the \textit{quantized standard elementary monomial} $E_i(j)$ represents the sum of monomials of degree $i$ from the set $\{x_1, \dots, x_j\}$ and corresponding $q$ entries that cover each $x_i$ at most once. \\
 
-
+\begin{eg}[Dynkin Example in $Fl(1, 2, 4)$]
 Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 3, 4)$ -- $q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = 3$ and $q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
 \begin{center}
 \begin{tikzpicture}
@@ -185,6 +169,7 @@ We have that
 \[
     e_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
 \]
+\end{eg}
 
 \begin{eg}[Dynkin Approach for Quantized Monomials in $Fl_3$]
 The Dynkin Diagram for $Fl_3$ is as follows:
@@ -212,6 +197,33 @@ which match the matrix approach calculations.
 \begin{remark}
 The above two approaches are equivalent formulations for determining the quantized standard elementary monomials. The diagram approach can be generalized to partial flag manifolds as is, whereas the matrix approach has a similar but slightly more complicated structure in the partial flag case.
 \end{remark}
+
+\subsection{Quantum Schubert Polynomials}
+\textbf{\textit{Quantum Schubert polynomials}} arise as ``quantized'' versions of the Schubert polynomials. Consider the Schubert polynomial $\mathfrak{S}_{[3 \, 1 \, 2]}$ in $S_3$. One can find, using the divided difference operator, that $\mathfrak{S}_{[3 \, 1 \, 2]} = x_1^2$ -- from the above example, we know that this can also be rewritten in the standard elementary monomial basis:
+\begin{align*}
+    \mathfrak{S}_{[3 \, 1 \, 2]} &= x_1^2 \\
+    &= e_1(1) e_1(2) - e_2(2).
+\end{align*}
+
+To determine the corresponding quantum Schubert polynomial, we simply replace each of the standard elementary monomials with their quantized versions (represented by capital letters), so
+
+\begin{align*}
+    \mathfrak{S}_{[3 \, 1 \, 2]}^q &= E_1(1) E_1(2) - E_2(2) \\
+    &= x_1(x_1 + x_2) - (x_1x_2 + q_1) \\
+    &= x_1^2 - q_1
+\end{align*}
+
+The quantum Schubert polynomials serve as a basis for the quantum cohomology of $Fl(3)$. As we saw in the cohomology case, in general, the basis for the quantum cohomology of a partial flag $Fl(d_1, d_2, \dots, d_k)$ $ \leftrightarrow \{\mathfrak{S}_w \in S_n \mid w \text{ has descents } \subseteq \{ d_1, d_2, \dots, d_k\} \}$. \\
+
+The following is a Quantum Monk rule for products of Quantum Schuberts in Complete Flags:
+\begin{theorem*}[Quantum Monk for Quantum Schubert in Complete Flags, FGP (584)]
+Let $t_{ab}$ be the transposition of positions $a$ and $b$.
+    \[
+        \mathfrak{S}_{s_r}^q \mathfrak{S}_{w}^q = \sum \mathfrak{S}_{wt_{ab}}^q + \sum q_{cd}\mathfrak{S}_{wt_{cd}}^q
+    \]
+    where the first sum is over $a \leq r < b$ such that $l(wt_{ab}) = l(w) + 1$ and the second sum is over $c \leq r < d$ such that $l(wt_{cd}) = l(w) - l(t_{cd}) = l(w) - 2(d - c) + 1$. \textit{note: $q_{cd} = q_c q_{c+1} \dots q_{d-1}$.}
+\end{theorem*}
+
 
 \subsection{Grothendieck Polynomials}
 
@@ -276,5 +288,24 @@ where $(a_1, b_1) \prec (a_2,b_2) \prec \ldots \prec (a_s,b_s)$.
 \end{theorem}
 
 For calculations with quantum Grothendiecks, there is the following \href{https://ow3.math.rutgers.edu/~asbuch/equivcalc/}{Maple Package for Quantum Grothendiecks}.
+
+\newpage
+
+\begin{table}[!h]
+\centering
+\caption{Grothendiecks for $S^3$}
+\begin{tabular}{|p{2cm}|c|p{10cm}|}
+\hline
+Permutation &  Grothendieck  &  Quantum Grothendieck  \\ \hline
+123 & 1 & 1 \\ \hline
+132 & $-x_1x_2 + x_1 + x_2$ & $x_1x_2q_2 - x_1x_2 - x_1q_2 - x_2q_2 + x_1 + x_2 + q_2$ \\ \hline
+213 & $x_1$ & $-x_1q_1 + x_1 + q_1$ \\ \hline
+231 & $x_1x_2$ & $-x_1x_2q_2 + x_1x_2 - x_1q_1 + x_1q_2 + q_1$ \\ \hline
+312 & $x_1^2$ & $
+    x_1^2q_1^2 + x_1x_2q_1q_2  - 2x_1^2q_1 - x_1x_2q_1 - 2x_1q_1^2 - x_1q_1q_2 
+    - x_2q_1q_2 + x_1^2 + 3x_1q_1 + x_2q_1 + q_1^2 + q_1q_2 - q_1$ \\ \hline 
+321 & $x_1^2x_2$ & $x_1^2x_2q_1q_2 - x_1^2x_2q_1 + x_1^2q_1^2 - x_1^2x_2q_2 - x_1^2q_1q_2 - x_1x_2q_1q_2 + x_1^2x_2 - x_1^2q_1 + x_1x_2q_1 - 2x_1q_1^2 + x_1^2q_2 + x_1q_1q_2 + x_1q_1 + q_1^2$ \\ \hline 
+\end{tabular}
+\end{table}
 
 \end{document}
