@@ -18,14 +18,49 @@ Wednesday, June 12th
     \item Continue reading through FGP and Ciochan-Fontanine papers for Quantum Schuberts in partial flags
 \end{itemize}
 
+Thursday, June 13th
+\begin{itemize}
+    \item Started experimenting with George's code for Quantum Schuberts
+    \item Finalize questions for meetings (see below)
+\end{itemize}
+
+Friday, June 14th
+\begin{itemize}
+    \item Met with Linda, discussed quantization and Kato maps, Schubert polynomial difference rules, partial flag cases
+    \item Debugged George's code for Quantum Schuberts, now experimenting more
+    \item Goal: understand partial flag Quantum Schubert cases
+\end{itemize}
+
 \subsection{Points of Discussion for June 14th, Friday Meeting}
 
 \begin{itemize}
-    \item For partial flags do we always need the largest space i.e. if we are working in $\C^4$, does a partial flag always include a dimension of size $4$: $Fl(1, 2, \C^4)$?
     \item Work through Schubert polynomial difference rule (check order of divided difference, Schubert representations)
     \item Giambelli polynomials/Giambelli Formula (expressing one Schubert class in terms of others?) and its relation to Grothendiecks and Pieri Formula (mentioned in Buch QH)
-    \item Products of Quantum Schuberts in Partial Flags (discuss George's code)
+    \item Products of Quantum Schuberts in Partial Flags (discuss George's code). in partial flag case is it just that we have different bases?
+    \item Can we go through the arrow diagram and what parts do and don't carry over to the partial flag case?
+    \item Lenart Maeno says "We use
+a new quantization map (Definition 3.14, Corollary 5.7), which is based on the presentation of QK(Fln)
+in [22], and which has a factorization property similar to that of the cohomology quantization map. Thus, our quantum Grothendieck polynomials are different from those in [19], which were defined by
+applying the cohomology quantization map to Grothendieck polynomials." What does this mean?? What is the benefit of using one construction over the other?
+\item Messing around with quantum Grothendieck data - what should I be looking for?
+\item Lenart Maeno say 4.1 is related to the Grassmannian . . . how? presumably that's something we want to look at . . . 
+\end{itemize}
 
+Meeting Notes
+\begin{itemize}
+    \item Buch QH partial flag has same results as CF
+    \item Stick to Monk/Chevalley
+    \item Sage Quantum Bruhat graph
+    \item Schubert calculus: 
+    \begin{enumerate}
+        \item How do you write it as a polynomial ring?
+        \item How do you write the basis as polynomials? -- Giambelli
+        \item Multiplication rule (Monk, Pieri)
+    \end{enumerate}
+    \item Flag 1,3,4 table in CF is good. Get more familiar w sigmas
+    \item Look at some products (specifically multiplying by a simple transposition). Write it in terms of a basis 
+    \item Get more comfortable with Giameblli for partial flags, see if you can understand some of the code (for the Monk) -- do small cases for the quantum schubert partial flags, and quantum grothendieck for full flags
+    \item Try to modify write polynomial in terms of basis for different partial flags
 \end{itemize}
 
 \subsection{Reconciling Schurs, Schuberts, and Grothendiecks}
