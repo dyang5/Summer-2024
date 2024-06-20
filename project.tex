@@ -10,6 +10,23 @@
 
 \maketitle
 
+\section{Project Goals}
+
+Current Goals include
+\begin{itemize}
+    \item Extend QKcalc to Quantum Schuberts in partial flags, using universal schubert setup or setup with sigmas
+\end{itemize}
+
+Overall project goals and direction include
+
+\begin{itemize}
+    \item Candidates for Quantum Grothendiecks for Partial Flags \begin{itemize}
+        \item Begin with two-step flags -- good sample cases are $Fl(1, n-1, n)$.
+        \item Will likely want to guess and cross-check with Weihong Xu's conjectures.
+    \end{itemize}
+    \item Multiplication for Quantum Grothendiecks in Full and Partial Flags
+\end{itemize}
+
 \section{Background Material}
 \subsection{Schubert Polynomials}
 
@@ -34,13 +51,16 @@ The \textbf{Schubert polynomial} corresponding to $w \in S_n$ can be found recur
 \end{definition}
 
 
-When we refer to the complete flag manifold $Fl(1,2,3,4)$, the Schubert polynomials corresponding to the permutations in $S_4$ form the basis for the cohomology ring of the flag manifold.
+When we refer to the complete flag manifold $Fl(1,2,3,4)$, the Schubert polynomials corresponding to the permutations in $S_4$ form the basis for the \textbf{cohomology ring} of the flag manifold.
+\begin{definition}[Cohomology Ring]
+The \textbf{cohomology ring} of a flag $F$ is written as $H^*(F)$ and it encodes information about the number of intersections of certain Schubert varieties.
+\end{definition}
 \[
-    Fl(1, 2, 3, 4) \leftrightarrow S_4
+    H^*(Fl(1, 2, 3, 4)) \text{ has basis } \{\mathfrak{S}_w \in S_n \mid w \in S_4 \} 
 \]
 In general, for a given flag manifold $Fl(d_1, d_2, \dots, d_k)$ with $d_k = n$ we find that the basis for the cohomology corresponds to a subset of the Schubert polynomials of $S_n$:
 \[
-    Fl(d_1, d_2, \dots, d_k) \leftrightarrow \{\mathfrak{S}_w \in S_n \mid w \text{ has descents } \subseteq \{ d_1, d_2, \dots, n\} \}
+    H^*(Fl(d_1, d_2, \dots, d_k)) \text{ has basis } \{\mathfrak{S}_w \mid w \in S_n \text{ and has descents } \subseteq \{ d_1, d_2, \dots, n\} \}
 \]
 
 Take the specific case of $Gr(2, 4) = Fl(2, 4)$. The basis corresponds to Schubert polynomials of permutations $w \in S_4 \mid w \text{ has descent possibly at $2$}$; the permutations in said basis are Schubert polynomials for $[1\, 2 \mid 3 \,4]$, $[1\,3 \mid 2\,4]$, $[1\, 3 \mid 2\,4]$, $[1\,4 \mid 2\,3]$, $[2\,3 \mid 1\,4]$, $[2\,4 \mid 1\,3]$, and $[3\,4 \mid 1\,2]$. \\
@@ -63,9 +83,24 @@ In particular, the rule also helps us realize that all Schur polynomials (of a f
 
 \textit{Additional Info: Schubert polynomials can be realized through pipe dreams or rc-graphs -- see \href{https://sites.math.washington.edu/~billey/papers/bjs.pdf}{Billey-Jockusch-Stanley} for more information.}
 
-\subsection{Bases and Quantum Cohomology in Full Flag $Fl_n$}
+\subsection{Cohomology and Quantum Cohomology}
+\subsubsection{Introduction and Algebraic Representations}
+In the previous section, we introduced cohomology rings. There are also quantum cohomology and quantum k-theoretic rings. We introduce the former below.
+\begin{definition}[Quantum Cohomology Ring]
+The \textbf{quantum cohomology ring} of a flag $F$ is denoted $QH^*(F)$ and it encodes information about the number of algebraic curves passing through multiple Schubert varieties.
+\end{definition}
+Algebraically, the cohomology and quantum cohomology rings can be represented as follows
+\[
+    H^*(Fl_n) \cong \faktor{\Z[x_1, \dots, x_n]}{\{ e_i(n) \mid i \in \{1, \dots, n \}\}}
+\]
+and 
+\[
+    QH^*(Fl_n) \cong \faktor{\Z[x_1, \dots, x_n][q_1, \dots, q_{n-1}]}{\{ E_i(n) \mid i \in \{1, \dots, n \}\}}
+\]
+where each $E_i(n)$ corresponds to the quantized standard elementary monomial (see section below).
 
-As we have just seen, one basis for the cohomology ring $H^* Fl_n$ is the set of Schubert polynomials corresponding to each permutation in $S_n$, or
+\subsubsection{Bases for Cohomology Ring}
+As we have just seen, one basis for the cohomology ring $H^*(Fl_n)$ is the set of Schubert polynomials corresponding to each permutation in $S_n$, or
 \[
     \{ \mathfrak{S}_w(x_1, \dots, x_n) \mid w \in S_n \}.
 \]
@@ -87,8 +122,9 @@ where each $e_k(p)$ corresponds to the elementary symmetric polynomial of degree
     &= e_1(1)e_1(2) - e_2(2).
 \end{align*}
 
-Note that each of these bases has precisely $n!$ entries, a defining characteristic for the bases of a complete flag manifold. 
+Note that each of these bases has precisely $n!$ entries, a defining characteristic for the bases of a complete flag manifold. \\
 
+\subsubsection{Quantized Standard Elementary Monomials: Dynkin and Matrix Approaches}
 The quantized standard elementary monomials in both full and partial flag manifolds can be realized from two different methods. We begin with a discussion of the quantized standard elementary monomials in the full flag case. From Fomin-Gelfand-Postnikov (FGP), we can realize the quantized standard elementary monomial through the characteristic polynomial of the matrix
 \[
     G_n = \begin{bmatrix}
@@ -146,31 +182,6 @@ In general, recall that the standard elementary monomial $e_i(j)$ represents the
 
 Similarly, the \textit{quantized standard elementary monomial} $E_i(j)$ represents the sum of monomials of degree $i$ from the set $\{x_1, \dots, x_j\}$ and corresponding $q$ entries that cover each $x_i$ at most once. \\
 
-\begin{eg}[Dynkin Example in $Fl(1, 2, 4)$]
-Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 3, 4)$ -- $q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = 3$ and $q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
-\begin{center}
-\begin{tikzpicture}
-\filldraw[black] (0, 0) circle (0.05);
-\filldraw[black] (1, 0) circle (0.05);
-\filldraw[black] (2, 0) circle (0.05);
-\filldraw[black] (3, 0) circle (0.05);
-\draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-  (0,0) -- (2,0) node[midway,yshift=-2.5em]{$q_1$};
-  \draw [decorate,decoration={brace,amplitude=5pt,raise=1.5ex},color={blue}]
-  (1,0) -- (3,0) node[midway,yshift=2em]{$q_2$};
-\node[below] at (0, 0) {$x_1$};
-\node[below] at (1, 0) {$x_2$};
-\node[below] at (2, 0) {$x_3$};
-\node[below] at (3, 0) {$x_4$};  
-\end{tikzpicture}
-\end{center}
-
-We have that
-\[
-    e_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
-\]
-\end{eg}
-
 \begin{eg}[Dynkin Approach for Quantized Monomials in $Fl_3$]
 The Dynkin Diagram for $Fl_3$ is as follows:
 \begin{center}
@@ -194,11 +205,41 @@ We can easily identify the corresponding quantized standard elementary monomials
 which match the matrix approach calculations.
 \end{eg}
 
+
+\begin{eg}[Dynkin Example in $Fl(1, 2, 4)$]
+Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 2, 4)$ -- $q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = x_3$ and $q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
+\begin{center}
+\begin{tikzpicture}
+\filldraw[black] (0, 0) circle (0.05);
+\filldraw[black] (1, 0) circle (0.05);
+\filldraw[black] (2, 0) circle (0.05);
+\filldraw[black] (3, 0) circle (0.05);
+\draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
+  (0,0) -- (2,0) node[midway,yshift=-2.5em]{$q_1$};
+  \draw [decorate,decoration={brace,amplitude=5pt,raise=1.5ex},color={blue}]
+  (1,0) -- (3,0) node[midway,yshift=2em]{$q_2$};
+\node[below] at (0, 0) {$x_1$};
+\node[below] at (1, 0) {$x_2$};
+\node[below] at (2, 0) {$x_3$};
+\node[below] at (3, 0) {$x_4$};  
+\end{tikzpicture}
+\end{center}
+
+We have that
+\[
+    e_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
+\]
+\end{eg}
+
 \begin{remark}
 The above two approaches are equivalent formulations for determining the quantized standard elementary monomials. The diagram approach can be generalized to partial flag manifolds as is, whereas the matrix approach has a similar but slightly more complicated structure in the partial flag case.
 \end{remark}
 
+\textcolor{red}{Discuss partial flag case (CF), examples on board, use sigma matrices}
+
+
 \subsection{Quantum Schubert Polynomials}
+\subsubsection{Complete Flag Case}
 \textbf{\textit{Quantum Schubert polynomials}} arise as ``quantized'' versions of the Schubert polynomials. Consider the Schubert polynomial $\mathfrak{S}_{[3 \, 1 \, 2]}$ in $S_3$. One can find, using the divided difference operator, that $\mathfrak{S}_{[3 \, 1 \, 2]} = x_1^2$ -- from the above example, we know that this can also be rewritten in the standard elementary monomial basis:
 \begin{align*}
     \mathfrak{S}_{[3 \, 1 \, 2]} &= x_1^2 \\
@@ -224,6 +265,7 @@ Let $t_{ab}$ be the transposition of positions $a$ and $b$.
     where the first sum is over $a \leq r < b$ such that $l(wt_{ab}) = l(w) + 1$ and the second sum is over $c \leq r < d$ such that $l(wt_{cd}) = l(w) - l(t_{cd}) = l(w) - 2(d - c) + 1$. \textit{note: $q_{cd} = q_c q_{c+1} \dots q_{d-1}$.}
 \end{theorem*}
 
+\subsubsection{Partial Flag Case}
 
 \subsection{Grothendieck Polynomials}
 
@@ -308,4 +350,39 @@ Permutation &  Grothendieck  &  Quantum Grothendieck  \\ \hline
 \end{tabular}
 \end{table}
 
+
+\newpage
+
+Multiplication Tables for $Fl(3)$
+\begin{table}[!h]
+\centering
+\caption{Schuberts for $Fl(3)$}
+\begin{tabular}{|p{1.2cm}|p{2cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+$\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]} & \textbf{X[312]} & \textbf{X[321]} \\ \hline
+\textbf{X[123]} & X[1] & X[132] & X[213] & X[231] & X[312] & X[321] \\ \hline 
+\textbf{X[132]} & X[132] & $q_2X[1]+X[231]$ & $X[231]+X[312]$ & $q_2X[213]$ & $X[321]$ & $q_1q_2X[1]+q_2X[312]$  \\ \hline
+\textbf{X[213]} & X[213] & X[231]+X[312] & $q_2X[312]$ & X[321] & $q_1X[132]$ & $q_1q_2X[1]+q_1X[231]$ \\ \hline 
+\textbf{X[231]} & X[231] & $q_2X[213]$ & X[321] & $q_2X[312]$ & $q_1q_2X[1]$ & $q_1q_2X[132]$\\ \hline
+\textbf{X[312]} & X[312] & X[321] & $q_1X[132]$ & $q_1q_2X[1]$ & $q_1X[231]$ & $q_1q_2X[213]$ \\ \hline
+\textbf{X[321]} & X[321] & $q_1q_2X[1]+q_2X[312]$ & $q_1q_2X[1]+q_1X[231]$ & $q_1q_2X[132]$ & $q_1q_2X[213]$ & $q_1q_2X[3,1,2]$ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!h]
+\centering
+\caption{Grothendieck for $Fl(3)$}
+\begin{tabular}{|p{1.2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{3cm}|}
+\hline
+$\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]} & \textbf{X[312]} & \textbf{X[321]} \\ \hline
+\textbf{X[123]} & X[1] & X[132] & X[213] & X[231] & X[312] & X[321] \\ \hline 
+\textbf{X[132]} & X[132] & $q_2X[1, 2, 3] - q_2X[2, 1, 3] + X[2, 3, 1]$ & $X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1]$ & $q_2X[2, 1, 3]$ &  X[3, 2, 1] & $q_1q_2X[1, 2, 3] - q_1q_2X[1, 3, 2] + q_2X[3, 1, 2]$  \\ \hline
+\textbf{X[213]} & X[213] & X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1] & $q_1X[1, 2, 3] - q_1X[1, 3, 2] + X[3, 1, 2]$
+& $q_1X[1, 2, 3] - q_1X[1, 3, 2] + X[3, 1, 2]$ & $q_1X[1, 3, 2]$ & $q_1q_2X[1, 2, 3] - q_1q_2X[2, 1, 3] + q_1X[2, 3, 1]$ \\ \hline 
+\textbf{X[231]} & X[231] & $q_2X[2, 1, 3]$ & X[3, 2, 1] & $q_2X[3, 1, 2]$& $q_1q_2X[1, 2, 3]$& $q_1q_2X[1, 3, 2]$ \\ \hline
+\textbf{X[312]} & X[312] & $X[3, 2, 1]$ & $q_1X[1, 3, 2]$& $q_1q_2X[1, 2, 3]$&  & \\ \hline
+\textbf{X[321]} & X[321] & & & & & \\ \hline
+\end{tabular}
+\end{table}
 \end{document}
