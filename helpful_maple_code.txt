@@ -32,12 +32,50 @@ sigma := proc(F::Array, deg, j)
 end proc;
 
 
+I think this is maybe working for creating the matrix A. For sure there are things I have to debug, but I think the outline works? Still no clue how to do matrix B . . . 
+
+#creating mini sigma matrices. pass in list of skipped values, return matrix. Need to confirm if sigma(F, i, lst[i]) actually has the values we want to pass in
+sigma_matrix := proc(lst, F::Array)
+	n := nops(lst) + 1;
+	A := Matrix(n, n, (i,j) -> 0);
+	for i from 1 to n do
+		for j from 1 to n do
+			if i = j+1 then
+				A[i,j] = -1;
+			end if;
+		end do;
+	end do;
+	for i from 1 to nops(lst)+1 do
+		B := Matrix(n, n, (i, j) -> if i = 1 then sigma(F, i, lst[i]) else 0 end if);
+		A := A+B;
+	end do;
+	return A;
+end proc;
 
 
-#pseudocode for constructing the block diagonal matrix?
+#Constructs A_matrix. Flag gets passed in with 0's in skipped entries. Returns A as a block diagonal matrix constructed from a list of mini square matrices
+A_matrix := proc(F::Array)
+    local matrix_lst, singleton_matrix, i;
 
-#constructs individual block matrices. Returns as a list
-components := 
+    matrix_lst := [];
 
-#pieces the block matrices together
-BlockDiag := BlockDiagonalMatrix(components( ));
+    i := 1;
+    while i <> nops(F)+1 do
+        if F[i] <> 0 then
+            singleton_matrix := Matrix([[F[i]]]);  # Create a 1x1 matrix with F[i]
+            matrix_lst := [op(matrix_lst), singleton_matrix];
+            i = i+1;
+        else
+        	lst := [];
+        	while F[i] <> 0 do
+        		lst := [op(lst),F[i]];
+        		i := i+1;
+        	end do;
+                i = i+1;
+        	matrix_lst := [op(matrix_lst), sigma_matrix(lst,F)];
+        end if;
+    end do;
+    n := add(MatrixDimension, matrix_lst);
+    A := DiagonalMatrix(matrices_lst);
+    return A;
+end proc;

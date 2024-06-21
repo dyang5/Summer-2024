@@ -31,3 +31,34 @@ Thursday, June 19th
     \item Typed up meeting notes, reviewing $\sigma$ matrix approach for partial flags 
     \item Started setting up $A_n^q$ matrix, per Ciochan-Fontanine, which will be used to calculate quantized standard elementary monomials in partial flags
 \end{itemize}
+
+Friday, June 20th
+
+Point of Discussion for Friday, June 20th Meeting
+\begin{itemize}
+    \item Revisit quantum Giambelli classes and how to use the matrix to determine Quantum Schuberts in partial flags
+    \item Review Ciocan-Fontanine formulas for $a$ and $b$ matrices (485, 487) in partial flag cases
+\end{itemize}
+
+
+Meeting Notes
+\begin{itemize}
+    \item To do: use QK maple code, try to code and compute quantum Schuberts for partial flags, quantum grothendiecks for full flags. $Fl(3)$ is a good test case (for Weihong Xu's conjectures and for ones we come up with), as it is both a complete flag and a two-step flag. 
+    \item Maple code has quantum Schubert. To get from equivariant to quantum, set $y_i = 0$ for each $y_i$.
+    \item Goal: output everything for $Fl(3)$; $Fl(4)$ is also helpful. Then try $Fl(1,2,4)$ or $Fl((1,3,4)$.
+    \item Tasks: code partial flag cohomology. Do universal grothendiecks and quantum grothendiecks for $Fl(3)$ and $Fl(4)$
+\end{itemize}
+
+6/21 Notes:
+\begin{itemize}
+    \item typo in CF
+    \item Create elementary symmetric polynomials (which we can now do). Then create quantum schuberts
+    \item elementary symmetrics go by step. (e.g. for 1,2,4 $e_1^q(3)$ refers to the step 4)
+    \item Python code has some divided difference code
+    \item Tasks:
+    \begin{enumerate}
+        \item Create quantum elementary symmetrics
+        \item Goal: find quantum schubert polynomials. Take word of longest length, double, divided difference (the right side does $w_0$ to $w$. The left hand side does $w$ to $w_0$) 
+        \item Play around with Weihong's code, and familiarize ourselves with $Fl(1,2,4)$ and $Fl(1,3,4)$
+    \end{enumerate}
+\end{itemize}
