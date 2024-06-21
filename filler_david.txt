@@ -1,4 +1,12 @@
-# filler c function
+# quantum elementary standard monomials in partial flags
+qe_pf := proc(F::Array, deg, block)
+	local sz := F[block];
+	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*q_mat(F));
+	res := coeff(cp,t,deg);
+	return res;
+end proc;
+
+# c (replaced with quantum elementary) in Universal Fulton
 c := proc(F::Array, a, b)
 	lenF := LinearAlgebra[Dimension](F);
 	for i from 1 to lenF - 1 do
@@ -8,6 +16,7 @@ c := proc(F::Array, a, b)
 	end do;
 end proc;
 
+# set up for longest word Fulton
 usp0 := proc(n)
   local res, i, j;
   res := 1;

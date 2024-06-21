@@ -1,3 +1,13 @@
+# calculate quantum elementary standard monomials in partial flags
+qe_pf := proc(F::Array, deg, block)
+	local sz, cp, res, a;
+	sz := F[block];
+	a := Matrix(sz, sz, q_mat(F));
+	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*a);
+	res := coeff(cp,t,deg);
+	return res;
+end proc;
+
 # returns elementary symmetric polynomial of degree k in variables xfirst to xlast
 esp := proc(deg, first, last)
 	local n, combs, poly, term, vars;
@@ -40,9 +50,10 @@ end proc;
 
 # set up A diagonal matrix (p 485 CF)
 cf_a := proc(F::Array)
+	local lenF, mat;
 	lenF := LinearAlgebra[Dimension](A);
 	
-	local mat := Array(1..A[lenF], 1..A[lenF], [[seq(0, j=1..A[lenF])] $ A[lenF]]);
+	mat := Array(1..A[lenF], 1..A[lenF], [[seq(0, j=1..A[lenF])] $ A[lenF]]);
 
 	for block_num from 1 to lenF do
 		local d, start, size;
@@ -110,7 +121,6 @@ print2DArray := proc(arr)
         printf("\n");
     end do;
 end proc;
-
 
 # testing
 local i;
