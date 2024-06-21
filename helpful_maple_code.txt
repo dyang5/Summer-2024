@@ -1,0 +1,43 @@
+# returns elementary symmetric polynomial of degree k in variables xfirst to xlast
+esp := proc(deg, first, last)
+	local n, combs, poly, term, vars;
+	n = last - first + 1;
+	poly := 0;
+	vars := [seq(x||a, a = first..last)];
+	combs := combinat[choose](vars, deg);
+
+	if nops(vars) < deg then
+		return poly;
+	end if;
+		for i from 1 to nops(combs) do
+			term := 1;
+			for j from 1 to deg do
+				term := term * combs[i][j];
+			end do;
+			poly := poly + term;
+		end do;
+	return poly;
+end proc;
+
+# sigma function for schuberts (pass in flag as F array)
+sigma := proc(F::Array, deg, j)
+	local first, last;
+	if j = 1 then
+		first := 1;
+	else
+		first := F[j-1] + 1;
+	end if;
+	last := F[j];
+	return esp(deg, first, last);
+end proc;
+
+
+
+
+#pseudocode for constructing the block diagonal matrix?
+
+#constructs individual block matrices. Returns as a list
+components := 
+
+#pieces the block matrices together
+BlockDiag := BlockDiagonalMatrix(components( ));

@@ -1,0 +1,90 @@
+# returns elementary symmetric polynomial of degree k in variables xfirst to xlast
+esp := proc(deg, first, last)
+	local n, combs, poly, term, vars;
+	n = last - first + 1;
+	poly := 0;
+	vars := [seq(x||a, a = first..last)];
+	combs := combinat[choose](vars, deg);
+
+	if nops(vars) < deg then
+		return poly;
+	end if;
+
+		for i from 1 to nops(combs) do
+			term := 1;
+			for j from 1 to deg do
+				term := term * combs[i][j];
+			end do;
+			poly := poly + term;
+		end do;
+	return poly;
+end proc;
+
+# sigma function for schuberts
+sigma := proc(F::Array, deg, j)
+	local first, last;
+	if j = 1 then
+		first := 1;
+	else
+		first := F[j-1] + 1;
+	end if;
+	last := F[j];
+	return esp(deg, first, last);
+end proc;
+
+# diagonal matrix in CF
+cf_diag := proc(F::Array, size, block_num)
+	local d, start;
+	d := Array(1..size, 1..size, [[seq(0, j=1..size)] $ size]);
+	for i from 1 to size do
+		if block_num = 1 then
+			start := 0;
+		else
+			start := block_num - 1;
+		end if;
+		d[1, i] := sigma(F, i, block_num);
+	end do;
+
+	for i from 1 to size do
+		for j from 1 to size do
+			if j = i-1 then
+				d[i, j] := -1;
+			end if;
+		end do;
+	end do;
+	return d;
+end proc;
+
+
+# prints 2D array arr
+print2DArray := proc(arr)
+    local rows, cols, i, j;
+    rows := LinearAlgebra[Dimension](arr)[1];
+    cols := LinearAlgebra[Dimension](arr)[2];
+
+    for i from 1 to rows do
+        for j from 1 to cols do
+            printf("%8s", convert(arr[i, j], string));
+        end do;
+        printf("\n");
+    end do;
+end proc;
+
+
+local i;
+A:=Array(1..3, [1,2,4]);
+lenA := LinearAlgebra[Dimension](A);
+
+blocks:= Array(1..lenA);
+print(lenA)
+
+for i from 1 to lenA do
+	print(i);
+	if i = 1 then
+		print2DArray(cf_diag(A, A[1], i));
+	else 
+		print2DArray(cf_diag(A, A[i] - A[i-1], i));
+	end if;
+end do;
+
+print(blocks);

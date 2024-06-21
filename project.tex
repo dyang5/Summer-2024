@@ -87,7 +87,7 @@ In particular, the rule also helps us realize that all Schur polynomials (of a f
 \subsubsection{Introduction and Algebraic Representations}
 In the previous section, we introduced cohomology rings. There are also quantum cohomology and quantum k-theoretic rings. We introduce the former below.
 \begin{definition}[Quantum Cohomology Ring]
-The \textbf{quantum cohomology ring} of a flag $F$ is denoted $QH^*(F)$ and it encodes information about the number of algebraic curves passing through multiple Schubert varieties.
+The \textbf{quantum cohomology ring} of a flag $F$ is denoted $QH^*(F)$ and it encodes information about the number of algebraic curves passing through multiple Schubert varieties (more specifically, 3-point, genus-zero Gromov-Witten invariants).
 \end{definition}
 Algebraically, the cohomology and quantum cohomology rings can be represented as follows
 \[
@@ -206,6 +206,10 @@ which match the matrix approach calculations.
 \end{eg}
 
 
+\begin{remark}
+The above two approaches are equivalent formulations for determining the quantized standard elementary monomials. The diagram approach can be generalized to partial flag manifolds as is (see below), whereas the matrix approach has a similar but slightly more complicated structure in the partial flag case.
+\end{remark}
+
 \begin{eg}[Dynkin Example in $Fl(1, 2, 4)$]
 Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 2, 4)$ -- $q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = x_3$ and $q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
 \begin{center}
@@ -227,16 +231,116 @@ Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 
 
 We have that
 \[
-    e_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
+    E_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
 \]
 \end{eg}
 
+\vspace{0.25cm}
+
+The matrix approach can also be adapted to calculate the Quantized Standard Elementary Monomials in Partial Flags, following a procedure discussed in Ciocan-Fontanine. \\
+
+Consider $F = Fl(n_1, \dots, n_k)$. The matrix setup is as follows: we define $\sigma_1^1, \dots, \sigma_{n_1}^1, \sigma_1^2, \dots, \sigma_{n_2 - n_1}^2$, $\dots, \sigma_1^{k+1}, \dots, \sigma_{n-n_k}^{k+1}$ to be $n$ independent variables, and define $A_n$ to be a block diagonal matrix $\mathrm{diag}(D_1, \dots, D_{k+1})$ where
+\[
+    D_j \coloneqq \begin{bmatrix}
+        \sigma_1^j & \sigma_2^j & \dots & \sigma_{n_j - n_{j-1} - 1}^j & \sigma_{n_j - n_{j-1}}^j \\
+        -1 & 0 & \dots & 0 & 0 \\
+        \vdots & \vdots & \dots & \vdots & \vdots \\
+        0 & 0 & \dots & -1 & 0.
+    \end{bmatrix}
+\]
+
+A result by Borel (0.1 in Ciocan-Fontanine) tells us that there is an isomorphism 
+\[
+    \boxed{H^*(F) \cong \faktor{\Z[\sigma_1^1, \dots, \sigma_{n_1}^1, \dots, \sigma_1^{k+1}, \dots, \sigma_{n-n_k}^{k+1}]}{(g_1, \dots, g_n)}}
+\]
+where $g_1, \dots, g_n$ are the coefficients of the characteristic polynomial of the matrix $A_n$. \\
+
+In particular, if we interpret a given partial flag manifold, if we interpret each $\sigma_i^j$ as the $i$th elementary symmetric polynomial in variables $x_{n_{j-1} + 1}, \dots, x_{n_j}$, we can recover the Schubert polynomials, and the Schubert polynomials serve as the Giambelli polynomials which are associated with Schubert classes in our partial flag manifold. \\
+
+Just as importantly, we can obtain a  presentation of the quantum cohomology ring of any partial flag manifold $F$, matching (0.3) in Ciocan-Fontanine. If we define $B_n = (b_{lm})_{1 \leq l, m \leq n}$ to be the matrix with entries
+\[
+b_{lm} = \begin{cases}
+    (-1)^{n_{j+1} - n_j + 1} q_j & \text{ if $l = n_{j-1} + 1$ and $m = n_{j+1}$, for $1 \leq j \leq k$} \\
+    -1 & \text{ if $l = n_{j} + 1$ and $m = n_{j}$ for $1 \leq j \leq k-1$} \\
+    0 & \text{ otherwise},
+\end{cases}
+\]
+
+then there is an isomorphism
+\[
+    \boxed{QH^*(F) \cong \faktor{\Z[\sigma_1^1, \dots, \sigma_{n_1}^1, \dots, \sigma_1^{k+1}, \dots, \sigma_{n-n_k}^{k+1}][q_1, \dots, q_k]}{(G_1, \dots, G_n)}}
+\]
+where the $G_1, \dots, G_n$ are the coefficients of the characteristic polynomial of $A_n^q = A_n + B_n$. \\
+
+We can use this matrix setup and mirror the procedure for the full flag case to determine the quantized standard elementary monomials in partial flags. 
+
+\begin{theorem}[Ciocan-Fontanine page 499(iii)]
+Consider the flag $F = Fl(n_1, n_2, \dots, n_k)$. The quantized standard elementary monomial 
+\[
+    E_{i}(j) \text{ is the coefficient of } \lambda^{i-j} \text{ in } \det (A_j^q + \lambda I)
+\] 
+where $A_j^q$ is the upper left $j \times j$ submatrix of the $A_n^q$ matrix defined above.
+\end{theorem}
+
 \begin{remark}
-The above two approaches are equivalent formulations for determining the quantized standard elementary monomials. The diagram approach can be generalized to partial flag manifolds as is, whereas the matrix approach has a similar but slightly more complicated structure in the partial flag case.
+The above quantized standard elementary monomials directly relate to the quantum Giambelli polynomials; see Ciocan-Fontanine for more details.
 \end{remark}
 
-\textcolor{red}{Discuss partial flag case (CF), examples on board, use sigma matrices}
+\begin{eg}[$Fl(1, 2, 4)$ Calculations]
+\begin{align*}
+A_4^q = A_4 + B_4 &=
+\begin{bmatrix}
+x_1 & 0 & 0 & 0 \\
+0 & x_2 & 0 & 0 \\
+0 & 0 & \sigma_1^3 & \sigma_2^3 \\
+0 & 0 & -1 & 0
+\end{bmatrix} + 
+\begin{bmatrix}
+0 & q_1 & 0 & 0 \\
+-1 & 0 & 0 & -q_2 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+    x_1 & q_1 & 0 & 0 \\
+    -1 & x_2 & 0 & -q_2 \\
+    0 & -1 & \sigma_1^3 & \sigma_2^3 \\
+    0 & 0 & -1 & 0
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+    x_1 & q_1 & 0 & 0 \\
+    -1 & x_2 & 0 & -q_2 \\
+    0 & -1 & x_3 + x_4 & x_3x_4 \\
+    0 & 0 & -1 & 0
+\end{bmatrix}.
+\end{align*}
 
+Note that 
+\[
+    \det(A_2^q + \lambda I) = \left|
+    \begin{bmatrix}
+    x_1 + \lambda & q_1 \\
+    -1 & x_2 + \lambda
+    \end{bmatrix}
+    \right| = (x_1x_2 + q_1) + \lambda(x_1 + x_2) + \lambda^2
+\]
+so $E_2(2) = x_1x_2 + q_1$ and $E_1(2) = x_1 + x_2$. \\
+
+Similarly, 
+\[
+    \det(A_3^q + \lambda I) = \left|
+    \begin{bmatrix}
+    x_1 + \lambda & q_1 & 0 \\
+    -1 & x_2 + \lambda & 0 \\
+    0 & -1 & x_3 + x_4 + \lambda
+    \end{bmatrix}
+    \right| = (x_1x_2x_3 + x_1x_2x_4) + \lambda
+\]
+
+\end{eg}
+\textcolor{red}{Go through example with Linda}
 
 \subsection{Quantum Schubert Polynomials}
 \subsubsection{Complete Flag Case}
@@ -266,6 +370,7 @@ Let $t_{ab}$ be the transposition of positions $a$ and $b$.
 \end{theorem*}
 
 \subsubsection{Partial Flag Case}
+\textcolor{red}{Universal Schubert by Fulton}
 
 \subsection{Grothendieck Polynomials}
 
@@ -356,7 +461,7 @@ Permutation &  Grothendieck  &  Quantum Grothendieck  \\ \hline
 Multiplication Tables for $Fl(3)$
 \begin{table}[!h]
 \centering
-\caption{Schuberts for $Fl(3)$}
+\caption{Quantum Schuberts for $Fl(3)$}
 \begin{tabular}{|p{1.2cm}|p{2cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
 \hline
 $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]} & \textbf{X[312]} & \textbf{X[321]} \\ \hline
@@ -372,7 +477,7 @@ $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]}
 
 \begin{table}[!h]
 \centering
-\caption{Grothendieck for $Fl(3)$}
+\caption{Quantum Grothendiecks for $Fl(3)$}
 \begin{tabular}{|p{1.2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{3cm}|}
 \hline
 $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]} & \textbf{X[312]} & \textbf{X[321]} \\ \hline
