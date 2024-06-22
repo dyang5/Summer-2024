@@ -1,7 +1,9 @@
 # quantum elementary standard monomials in partial flags
 qe_pf := proc(F::Array, deg, block)
-	local sz := F[block];
-	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*q_mat(F));
+	local sz, cp, res, a;
+	sz := F[block];
+	a := Matrix(sz, sz, q_mat(F));
+	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*a);
 	res := coeff(cp,t,deg);
 	return res;
 end proc;
