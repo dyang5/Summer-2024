@@ -174,7 +174,7 @@ Recognizing the quantum standard elementary monomials as the coefficients of the
 \end{eg}
 
 \vspace{0.5cm}
-Alternatively, one can recognize the standard elementary monomials through the use of Dynkin diagrams. Consider some flag manifold $Fl(d_1, \dots, d_n)$; by convention, $d_0 = 0$. The number of quantum terms $q_i$ corresponds to the number of steps in the flag, which is $n-1$. For each quantum term $q_i$ from $i = 1$ to $n-1$, $q_i$ covers $x_{d_{i-1} + 1}$ to $x_{d_{i+1}}$. \\
+Alternatively, one can recognize the standard elementary monomials through the use of Dynkin diagrams. Consider some flag manifold $Fl(d_1, \dots, d_n)$; by convention, $d_0 = 0$. The number of quantum terms $q_i$ corresponds to the number of steps in the flag, which is $n-1$. Each quantum term $(-1)^{d_{i+1} - d_{i} + 1}q_i$ covers $x_{d_{i-1} + 1}$ to $x_{d_{i+1}}$, for $i$ from $1$ to $n-1$, per equation (18) in Fulton's Universal Schubert article. \\
 
 The \textit{\textbf{Dynkin diagram}} represents the relationships between the $x$ and $q$ terms, and can be used to determine the quantized standard elementary monomials. \\
 
@@ -211,7 +211,7 @@ The above two approaches are equivalent formulations for determining the quantiz
 \end{remark}
 
 \begin{eg}[Dynkin Example in $Fl(1, 2, 4)$]
-Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 2, 4)$ -- $q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = x_3$ and $q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
+Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 2, 4)$. by the above formulalation, $(-1)^{2-1+1}q_1 = q_1$ spans $x_{d_0 + 1} = x_1$ to $x_{d_1} = x_3$ and $(-1)^{4-2+1}q_2 = -q_2$ spans $x_{d_1 + 1} = x_2$ to $x_{d_2} = x_4$. 
 \begin{center}
 \begin{tikzpicture}
 \filldraw[black] (0, 0) circle (0.05);
@@ -219,9 +219,9 @@ Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 
 \filldraw[black] (2, 0) circle (0.05);
 \filldraw[black] (3, 0) circle (0.05);
 \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-  (0,0) -- (2,0) node[midway,yshift=-2.5em]{$q_1$};
+  (0,0) -- (1,0) node[midway,yshift=-2.5em]{$q_1$};
   \draw [decorate,decoration={brace,amplitude=5pt,raise=1.5ex},color={blue}]
-  (1,0) -- (3,0) node[midway,yshift=2em]{$q_2$};
+  (1,0) -- (3,0) node[midway,yshift=2em]{$-q_2$};
 \node[below] at (0, 0) {$x_1$};
 \node[below] at (1, 0) {$x_2$};
 \node[below] at (2, 0) {$x_3$};
@@ -231,8 +231,9 @@ Consider the following Dynkin diagram corresponding to the flag manifold $Fl(1, 
 
 We have that
 \[
-    E_4(4) = x_1x_2x_3x_4 + q_1x_4 + x_1q_2.
+    E_4(4) = x_1x_2x_3x_4 + q_1x_3x_4 - x_1q_2.
 \]
+\textit{Note: this notation is slightly different from the quantum Giambelli notation in Ciocan-Fontanine. Here, $E_i(j)$ refers to the quantized standard elementary monomial of degree $i$ covering variables $x_1, \dots, x_j$.}
 \end{eg}
 
 \vspace{0.25cm}
@@ -275,16 +276,12 @@ where the $G_1, \dots, G_n$ are the coefficients of the characteristic polynomia
 We can use this matrix setup and mirror the procedure for the full flag case to determine the quantized standard elementary monomials in partial flags. 
 
 \begin{theorem}[Ciocan-Fontanine page 499(iii)]
-Consider the flag $F = Fl(n_1, n_2, \dots, n_k)$. The quantized standard elementary monomial 
+Consider the flag $F = Fl(n_1, n_2, \dots, n_k)$. The quantum Giambelli polynomial $G_i^j$ (corresponding to the standard elementary monomial $E_i(n_j)$ discussed above) satisfies
 \[
-    E_{i}(j) \text{ is the coefficient of } \lambda^{i-j} \text{ in } \det (A_j^q + \lambda I)
+    G_{i}^j \text{ is the coefficient of } \lambda^{i-j} \text{ in } \det (A_{n_j}^q + \lambda I)
 \] 
-where $A_j^q$ is the upper left $j \times j$ submatrix of the $A_n^q$ matrix defined above.
+where $A_{n_j}^q$ is the upper left $n_j \times n_j$ submatrix of the $A_n^q$ matrix defined above.
 \end{theorem}
-
-\begin{remark}
-The above quantized standard elementary monomials directly relate to the quantum Giambelli polynomials; see Ciocan-Fontanine for more details.
-\end{remark}
 
 \begin{eg}[$Fl(1, 2, 4)$ Calculations]
 \begin{align*}

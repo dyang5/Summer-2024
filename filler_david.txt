@@ -2,7 +2,7 @@
 qe_pf := proc(F::Array, deg, block)
 	local sz, cp, res, a;
 	sz := F[block];
-	a := Matrix(sz, sz, q_mat(F));
+	a := LinearAlgebra[SubMatrix](q_mat(F), [1..sz], [1..sz]);
 	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*a);
 	res := coeff(cp,t,deg);
 	return res;
@@ -10,26 +10,26 @@ end proc;
 
 # c (replaced with quantum elementary) in Universal Fulton
 c := proc(F::Array, a, b)
-	lenF := LinearAlgebra[Dimension](F);
-	for i from 1 to lenF - 1 do
+	len := LinearAlgebra[Dimension](F);
+	for i from 1 to len - 1 do
 		if b >= F[i] and b <= F[i+1] then
-			return qe_pf(a, F[i]);
+			return qe_pf(F, a, F[i]);
 		end if;
 	end do;
 end proc;
 
 # set up for longest word Fulton
-usp0 := proc(n)
+usp0 := proc(F::Array, n)
   local res, i, j;
   res := 1;
   for i from 1 to n do
-      res := res * sum( c(i-j,i)*(-cat(y,n+1-i))^j, j=0..i );
+      res := res * sum( c(F, i-j,i)*(-cat(y,n+1-i))^j, j=0..i );
   end do;
 
   return res;
 end proc;
 
 # set up universal schubert polynomials
-usp := proc(y)
+(* usp := proc(y)
 	
-end proc;
+end proc; *)
