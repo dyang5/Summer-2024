@@ -1,0 +1,54 @@
+with(ListTools):
+with(GroupTheory);
+with(combinat);
+
+# Function to compute the number of inversions in a permutation
+InversionCount := proc(perm)
+    local n, i, j, count;
+    n := nops(perm);
+    count := 0;
+    for i from 1 to n-1 do
+        for j from i+1 to n do
+            if perm[i] > perm[j] then
+                count := count + 1;
+            end if;
+        end do;
+    end do;
+    return count;
+end proc;
+
+# Function to find the Coxeter length of a permutation
+CoxeterLength := proc(perm)
+    return InversionCount(perm);
+end proc;
+
+
+list_of_uv := proc(n,w)
+	uv_list := [];
+	len_w := CoxeterLength(w);
+	all_permutations := permute(n);
+	for i from 1 to nops(all_permutations) do
+		u := all_permutations[i];
+		 for j from 1 to nops(all_permutations) do
+		 	v := all_permutations[j];
+            	if PermInverse(Perm(v)).Perm(u) = Perm(w) then
+            		if CoxeterLength(v) + CoxeterLength(u) = len_w then
+            			uv_list := [op(uv_list), [u,v]];
+            		end if;
+            	end if;
+           end do;
+     end do;
+     return (uv_list);
+end proc;            	
+            
+quantum_schub_in_two_variables := proc(n,w,x,y)
+	little_sum := 0;
+	for i from 1 to nops(list_of_uv) do
+		little_sum := little_sum + ((-1)^(CoxeterLength(list_of_uv[i[1]])) * quantum_schub(u,x) * schub(v,list_of_uv[i[2]]));
+	end do;
+	return little_sum;
+end proc;  
+
+w := [3,4,2,1];
+ugh := list_of_uv(4,w);
+print(ugh);

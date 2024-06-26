@@ -1,0 +1,772 @@
+# quantum elementary standard monomials in partial flags
+qe_pf := proc(F::Array, deg, block)
+	local sz, cp, res, a;
+	sz := F[block];
+	a := LinearAlgebra[SubMatrix](q_mat(F), [1..sz], [1..sz]);
+	cp := LinearAlgebra[Determinant](Matrix(sz,shape=identity)+t*a);
+	res := coeff(cp,t,deg);
+	return res;
+end proc;
+
+# c (replaced with quantum elementary) in Universal Fulton
+c := proc(F::Array, a, b)
+	len := LinearAlgebra[Dimension](F);
+	for i from 1 to len - 1 do
+		if b >= F[i] and b <= F[i+1] then
+			return qe_pf(F, a, F[i]);
+		end if;
+	end do;
+end proc;
+
+# set up for longest word Fulton
+usp0 := proc(F::Array, n)
+  local res, i, j;
+  res := 1;
+  for i from 1 to n do
+      res := res * sum( c(F, i-j,i)*(-cat(y,n+1-i))^j, j=0..i );
+  end do;
+
+  return res;
+end proc;
+
+# set up universal schubert polynomials
+(* usp := proc(y)
+	
+end proc; *)
+
+with(ListTools):
+with(GroupTheory);
+with(combinat);
+
+# Function to compute the number of inversions in a permutation
+InversionCount := proc(perm)
+    local n, i, j, count;
+    n := nops(perm);
+    count := 0;
+    for i from 1 to n-1 do
+        for j from i+1 to n do
+            if perm[i] > perm[j] then
+                count := count + 1;
+            end if;
+        end do;
+    end do;
+    return count;
+end proc;
+
+# Function to find the Coxeter length of a permutation
+CoxeterLength := proc(perm)
+    return InversionCount(perm);
+end proc;
+
+
+list_of_uv := proc(n,w)
+	uv_list := [];
+	len_w := CoxeterLength(w);
+	all_permutations := permute(n);
+	for i from 1 to nops(all_permutations) do
+		u := all_permutations[i];
+		 for j from 1 to nops(all_permutations) do
+		 	v := all_permutations[j];
+            	if PermInverse(Perm(v)).Perm(u) = Perm(w) then
+            		if CoxeterLength(v) + CoxeterLength(u) = len_w then
+            			uv_list := [op(uv_list), [u,v]];
+            		end if;
+            	end if;
+           end do;
+     end do;
+     return (uv_list);
+end proc;            	
+            
+quantum_schub_in_two_variables := proc(n,w,x,y)
+	listuv := list_of_uv(n,w);
+	little_sum := 0;
+	vars := [seq(y||i, i=1..n)];
+	xvars := [seq(x||i, i=1..n)];
+	for i from 1 to nops(listuv) do
+		print(listuv[i,1]);
+		thing1 := convert(listuv[i,1],list);
+		thing2 := convert(listuv[i,2],list);
+		Thing1 := sp(thing1);
+		FixedExpression1 := subs([seq(vars[i] = 0, i=1..n)], Thing1);
+		Thing2 := sp(thing2);
+		FixedExpression2 := subs([seq(vars[i] = 0, i=1..n)], Thing2);
+		BetterFixedExpression2 := subs([seq(xvars[i] = vars[i], i=1..n)], Thing2);
+		little_sum := little_sum + ((-1)^(CoxeterLength(listuv[i,1]))) * FixedExpression1 * BetterFixedExpression2;
+	end do;
+	return little_sum;
+end proc;  
+
+w := [1,3,2];
+ugh := list_of_uv(3,w);
+print(ugh);
+quantum_schub_in_two_variables(3,w,x,y);
+
+# equivariant quantum calculator
+
+# Adapted from Anders Buch's equivariant calculator
+# by David Anderson
+
+
+q_equiv_mult_table := proc(n)
+
+  description "Prints all products X[u]*X[v] in the equivariant quantum cohomology of Fl(n).";
+
+  local perms, i, j, u, v;
+
+  perms := combinat[permute](n);
+
+  for i from 1 to nops(perms) do
+
+    for j from i to nops(perms) do
+
+      u := perms[i];
+
+      v := perms[j];
+
+      printf("%a = %a\n", X[op(u)] * X[op(v)], dspm(u,v,n));
+
+    od;
+
+  od;
+
+  NULL;
+
+end:
+
+# compute schubert polyn for perm w
+
+sp := proc(w)
+
+  description "Compute the equivariant quantum Schubert polynomial for w.";
+
+  local n;
+
+  n := nops(w);
+
+  while n > 0 and w[n] = n do
+
+    n := n - 1;
+
+  od;
+
+  if n = 0 then
+
+    RETURN(1);
+
+  else
+
+    RETURN(_sp_y([op(1..n, w)]));
+
+  fi;
+
+end:
+
+
+
+_sp := proc(w)
+
+  local i, n, w1, sp1;
+
+  option remember;
+
+  n := nops(w);
+
+  i := 1;
+
+  while i < n and w[i] > w[i+1] do
+
+    i := i+1;
+
+  od;
+
+  if i = n then
+
+    RETURN(_sp0(n));
+
+  fi;
+
+  w1 := [op(1..i-1, w), w[i+1], w[i], op(i+2..n, w)];
+
+  sp1 := _sp(w1);
+
+  RETURN(sp_sym(sp1, i));
+
+end:
+
+
+
+
+# compute using y-divided difference
+
+_sp_y := proc(w)
+
+  local i, n, p1, p2, sb, w1, sp1;
+
+  option remember;
+
+  n := nops(w);
+
+  i := 1;
+
+  while i < n and _pos(w,i) > _pos(w,i+1) do
+
+    i := i+1;
+
+  od;
+
+  if i = n then
+
+    RETURN(_sp0(n));
+
+  fi;
+
+#  p1 := _pos(w,i);
+
+#  p2 := _pos(w,i+1);
+
+#  sb := { w[p1] = w[p2], w[p2] = w[p1] };
+
+  sb := { w[_pos(w,i)] = w[_pos(w,i+1)], w[_pos(w,i+1)] = w[_pos(w,i)] };
+
+  w1 := subs( sb, w );
+
+  sp1 := _sp_y(w1);
+
+  RETURN(-sp_sym_y(sp1, i));
+
+end:
+
+
+
+
+_pos := proc(w, ii)
+
+  if ii in w then
+
+    member(ii,w,'p');
+
+    RETURN(p);
+
+  else
+
+    RETURN('duuuude');
+
+  fi;
+
+end:
+
+
+
+# quantum elementary polynomial
+
+_qe := proc(ii,kk)
+
+  local g, i, j, cp, res, t;
+
+  for i from 1 to kk do
+
+    for j from 1 to kk do
+
+      if j = i then 
+
+        g[i,j] := cat(x,i);
+
+      elif j=i+1 then
+
+        g[i,j] := cat(q,i);
+
+      elif j=i-1 then
+
+        g[i,j] := -1;
+
+      else
+
+        g[i,j] := 0;
+
+      fi;
+
+    od;
+
+  od;
+
+  g := Matrix(kk,kk,g);
+
+  cp := LinearAlgebra[Determinant](Matrix(kk,shape=identity)+t*g);
+
+  res := coeff(cp,t,ii);
+
+  RETURN(res);
+
+end:
+
+
+_sp0 := proc(n)  # schub polyn for w0 in S_n
+
+  local res, i, j;
+
+  res := 1;
+
+  for i from 1 to n-1 do
+
+   # for j from 1 to n-i do
+
+      res := res * sum( _qe(i-j,i)*(-cat(y,n-i))^j, j=0..i );
+
+  #  od;
+
+  od;
+
+  RETURN(res);
+
+end:
+
+
+# K-quantum elementary polynomial
+
+
+_qfbar := proc(ii, kk)
+
+   local i, j, res;
+
+   if ii=0 then
+
+      RETURN(1);
+
+    elif ii>kk or ii<0 then
+
+      RETURN(0);
+
+   fi;
+
+   res := _qfbar( ii, kk-1 ) + (1-cat(x,kk))*(_qfbar( ii-1, kk-1 )) - cat(q,kk-1)*(1-cat(x,kk-1))*(_qfbar(ii-1,kk-2));
+
+   return( eval( res, [x0=0,q0=0] ) );
+
+end:
+
+
+_qf := ( ii, kk ) -> expand( _qfbar( ii, kk ) - cat(q,kk)*(1-cat(x,kk))*(_qfbar(ii-1,kk-1)) ) :
+
+
+
+
+_gp0 := proc(n)  # qGroth polyn for w0 in S_n
+
+  local res, i, j, k;
+
+  res := 1;
+
+  for i from 1 to n-1 do
+
+  #  for j from 1 to n-i do
+
+  #     res := res * (cat(x,i)+cat(y,j)-cat(x,i)*cat(y,j));
+
+      res := res * ( convert( [seq( (-1)^j*(_qf(j,i))*(1-cat(y,n-i))^j, j=0..i )], `+`) );
+
+  #  od;
+
+  od;
+
+  RETURN(res);
+
+end:
+
+
+
+_gp0_OLD := proc(n)  # Groth polyn for w0 in S_n
+
+  local res, i, j;
+
+  res := 1;
+
+  for i from 1 to n-1 do
+
+    for j from 1 to n-i do
+
+       res := res * (1-cat(x,i)*cat(y,j)^(-1));
+
+  #    res := res * sum( _qe(i-j,i)*(-cat(y,n-i))^j, j=0..i );
+
+    od;
+
+  od;
+
+  RETURN(res);
+
+end:
+
+
+
+sp_sym := proc(p, i)  # divided diff d_i on polyn p, in x var
+
+  local sb, pp, psym, pp1, t, dt;
+
+  sb := {cat(x,i) = cat(x,(i+1)), cat(x,(i+1)) = cat(x,i)};
+
+
+
+  if type(p, `*`) then
+
+    pp := {op(p)};
+
+  else
+
+    pp := {p};
+
+  fi;
+
+
+
+  psym := {};
+
+  pp1 := {};
+
+  while nops(pp) > 0 do
+
+    t := pp[1];
+
+    dt := subs(sb, t);
+
+
+
+    if evalb(t = dt) then
+
+      psym := {t, op(psym)};
+
+      pp := {op(2..nops(pp), pp)};
+
+
+
+    elif member(dt, pp, 'k') then
+
+      psym := {t, dt, op(psym)};
+
+      pp := {op(2..k-1, pp), op(k+1..nops(pp), pp)};
+
+
+
+    else
+
+      pp1 := {op(pp1), t};
+
+      pp := {op(2..nops(pp), pp)};
+
+    fi;
+
+  od;
+
+
+
+  t := convert(pp1, `*`);
+
+
+
+  RETURN(expand(normal((t - subs(sb, t)) / (cat(x,(i)) - cat(x,(i+1))))) *
+
+         convert(psym, `*`));
+
+end:
+
+
+sp_sym_y := proc(p, i)  # divided diff d_i on polyn p, in y var
+
+  local sb, pp, psym, pp1, t, dt;
+
+  sb := {cat(y,i) = cat(y,(i+1)), cat(y,(i+1)) = cat(y,i)};
+
+
+
+  if type(p, `*`) then
+
+    pp := {op(p)};
+
+  else
+
+    pp := {p};
+
+  fi;
+
+
+
+  psym := {};
+
+  pp1 := {};
+
+  while nops(pp) > 0 do
+
+    t := pp[1];
+
+    dt := subs(sb, t);
+
+
+
+    if evalb(t = dt) then
+
+      psym := {t, op(psym)};
+
+      pp := {op(2..nops(pp), pp)};
+
+
+
+    elif member(dt, pp, 'k') then
+
+      psym := {t, dt, op(psym)};
+
+      pp := {op(2..k-1, pp), op(k+1..nops(pp), pp)};
+
+
+
+    else
+
+      pp1 := {op(pp1), t};
+
+      pp := {op(2..nops(pp), pp)};
+
+    fi;
+
+  od;
+
+
+
+  t := convert(pp1, `*`);
+
+
+
+  RETURN(expand(normal((t - subs(sb, t)) / (cat(y,i) - cat(y,(i+1))))) *
+
+         convert(psym, `*`));
+
+end:
+
+
+# reduce to non-equiv
+
+spx := proc(w)
+
+     local evs;
+
+     evs := [ seq( cat(y,i)=0 , i=1..nops(w) ) ];
+
+     RETURN( eval( sp(w), evs ) );
+
+ end:
+
+
+## rest does QK
+
+
+qk_mult_table := proc(n)
+
+  description "Prints all products X[u]*X[v] in the quantum K-theory of Fl(n).";
+
+  local perms, i, j, u, v;
+
+  perms := combinat[permute](n);
+
+  for i from 1 to nops(perms) do
+
+    for j from i to nops(perms) do
+
+      u := perms[i];
+
+      v := perms[j];
+
+      printf("%a = %a\n", X[op(u)] * X[op(v)], qkm(u,v,n));
+
+    od;
+
+  od;
+
+  NULL;
+
+end:
+
+
+qk_mult_table_write := proc(n, filename)
+
+  description "Writes all products X[u]*X[v] in the quantum K-theory of Fl(n) to file.";
+
+  local perms, i, j, u, v;
+
+  perms := combinat[permute](n);
+
+  for i from 1 to nops(perms) do
+
+    for j from i to nops(perms) do
+
+      u := perms[i];
+
+      v := perms[j];
+
+      latex( X[op(u)] * X[op(v)] = qkm(u,v,n) \n \n, filename, 'append');
+
+    od;
+
+  od;
+
+  NULL;
+
+end:
+
+
+
+# Get quantum K-theoretic Littlewood-Richardson number
+
+qklr := proc(uu, vv, ww)
+
+  description "Get quantum K-theoretic Littlewood-Richardson coefficient, i.e., the coefficient of X[ww] in X[uu]*X[vv].";
+
+  local u, v, w, n, res;
+
+  u := chop_perm(uu);
+
+  v := chop_perm(vv);
+
+  w := chop_perm(ww);
+
+  n := max( nops(u), nops(v), nops(w) );
+
+  res := factor( coeff( qkm(u,v,n), X[op(w)] ) );
+
+  RETURN(res);
+
+end:
+
+
+# Multiply quantum Grothendieck polynomials
+
+qkm := proc(uu, vv, rnk)
+
+  description "Expand the product X[uu]*X[vv] of quantum Grothendieck polynomials, including only terms from S_rnk.";
+
+  local u, v, ulen, vlen, rk;
+
+
+
+#  u := chop_perm(uu);
+   u := uu;
+
+#  v := chop_perm(vv);
+   v := vv;
+
+
+  ulen := perm2length(u);
+
+  vlen := perm2length(v);
+
+
+
+  if nargs >= 3 then
+
+    rk := rnk;
+
+    # FIXME: can say exactly when the product is zero??
+
+    if nops(u) > rnk or
+
+       nops(v) > rnk
+
+    then
+
+      RETURN(0);
+
+    fi;
+
+  else
+
+    rk := infinity;
+
+  fi;
+
+
+
+  if ulen <= vlen then  ### better to expand after xtrans?
+
+    QK_mult(gpx(u), X[op(v)], rk);
+
+  else
+
+    QK_mult(gpx(v), X[op(u)], rk);
+
+  fi;
+
+end:
+
+
+
+# compute groth polyn for perm w
+
+gp := proc(w)
+
+  description "Compute the equivariant quantum Groth polynomial for w.";
+
+  local n;
+
+  n := nops(w);
+
+  while n > 0 and w[n] = n do
+
+    n := n - 1;
+
+  od;
+
+  if n = 0 then
+
+    RETURN(1);
+
+  else
+
+    RETURN(_gp_y([op(1..n, w)]));
+
+  fi;
+
+end:
+
+
+
+_gp := proc(w)
+
+  local i, n, w1, gp1;
+
+  option remember;
+
+  n := nops(w);
+
+  i := 1;
+
+  while i < n and w[i] > w[i+1] do
+
+    i := i+1;
+
+  od;
+
+  if i = n then
+
+    RETURN(_gp0(n));
+
+  fi;
+
+  w1 := [op(1..i-1, w), w[i+1], w[i], op(i+2..n, w)];
+
+  gp1 := _gp(w1);
+
+  RETURN(iso2_sym(gp1, i));
+
+end:
+
+
+
+# transpose i, j
+
+t_perm := proc( i, j, perm )
+
+     local k, pt;
+
+     if (i>=j) then RETURN('duuuude');
+
+        else pt := [ seq( perm[k], k=1..i-1 ), perm[j], seq( perm[k], k=i+1..j-1 ), perm[i], seq( perm[k], k=j+1..nops(perm) ) ];
+
+        RETURN( pt ); fi;
+
+ end:
