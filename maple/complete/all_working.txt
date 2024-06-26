@@ -141,6 +141,26 @@ qe_pf := proc(F::Array, deg, block)
 	return res;
 end proc;
 
+
+# substituting y's to be 0's
+y_sub := proc(expr)
+	return subs(y1=0, y2=0, y3=0, expr);
+end proc;
+
+c_setup := proc(F::Array)
+	local i, j;
+	local sz := LinearAlgebra[Dimension](F);
+	local c_arr := Array(1..sz, 1..sz, fill = 0);
+
+	for i from 1 to sz do
+		for j from 1 to sz do
+			c_arr[i, j] := c(F, i, j);
+		end do;
+	end do;
+
+	return c_arr;
+end proc;
+
 # c calculations from universal substitution (what to substitute for each c coefficient)
 c := proc(F::Array, a, b)
 	local i, len;
@@ -152,14 +172,10 @@ c := proc(F::Array, a, b)
 	end do;
 end proc;
 
-# substituting y's to be 0's
-y_sub := proc(expr)
-	return subs(y1=0, y2=0, y3=0, expr);
-end proc;
-
-# substituting expression involving c's with values from c_arr
-c_sub := proc(expr, c_arr)
-	local i, j, result, rows, cols;
+# substituting expression involving c's to values in partial flag F
+c_sub := proc(F::Array, expr)
+	local i, j, result, rows, cols, c_arr;
+	c_arr := c_setup(F);
 	result := expr;
 	rows := LinearAlgebra[Dimension](c_arr[1]);
 	cols := LinearAlgebra[Dimension](c_arr[2]);
@@ -324,7 +340,7 @@ qs_pf_basis := proc(A::Array)
 	local len := nops(descent_perms);
 	
 	for i from 1 to len do
-		qs_pf := [op(qs_pf), y_sub(usp(descent_perms[i]))];
+		qs_pf := [op(qs_pf), c_sub(A, y_sub(usp(descent_perms[i])))];
 	end do;
 
 	return qs_pf;
