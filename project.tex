@@ -283,7 +283,7 @@ Consider the flag $F = Fl(n_1, n_2, \dots, n_k)$. The quantum Giambelli polynomi
 where $A_{n_j}^q$ is the upper left $n_j \times n_j$ submatrix of the $A_n^q$ matrix defined above.
 \end{theorem}
 
-\begin{eg}[$Fl(1, 2, 4)$ Calculations]
+\begin{eg}[$Fl(1, 2, 4)$ Calculations \textcolor{red}{Fix example}]
 \begin{align*}
 A_4^q = A_4 + B_4 &=
 \begin{bmatrix}
@@ -473,16 +473,83 @@ $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]}
 \begin{table}[!h]
 \centering
 \caption{Quantum Grothendiecks for $Fl(3)$}
-\begin{tabular}{|p{1.2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{3cm}|}
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2.6cm}|}
 \hline
 $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]} & \textbf{X[312]} & \textbf{X[321]} \\ \hline
 \textbf{X[123]} & X[1] & X[132] & X[213] & X[231] & X[312] & X[321] \\ \hline 
-\textbf{X[132]} & X[132] & $q_2X[1, 2, 3] - q_2X[2, 1, 3] + X[2, 3, 1]$ & $X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1]$ & $q_2X[2, 1, 3]$ &  X[3, 2, 1] & $q_1q_2X[1, 2, 3] - q_1q_2X[1, 3, 2] + q_2X[3, 1, 2]$  \\ \hline
-\textbf{X[213]} & X[213] & X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1] & $q_1X[1, 2, 3] - q_1X[1, 3, 2] + X[3, 1, 2]$
+\textbf{X[132]} & $X[132]$ & $q_2X[1, 2, 3] - q_2X[2, 1, 3] + X[2, 3, 1]$ & $X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1]$ & $q_2X[2, 1, 3]$ & $X[3, 2, 1]$ & $q_1q_2X[1, 2, 3] - q_1q_2X[1, 3, 2] + q_2X[3, 1, 2]$  \\ \hline
+\textbf{X[213]} & X[213] & $X[2, 3, 1] + X[3, 1, 2] - X[3, 2, 1]$ & $q_1X[1, 2, 3] - q_1X[1, 3, 2] + X[3, 1, 2]$
 & $q_1X[1, 2, 3] - q_1X[1, 3, 2] + X[3, 1, 2]$ & $q_1X[1, 3, 2]$ & $q_1q_2X[1, 2, 3] - q_1q_2X[2, 1, 3] + q_1X[2, 3, 1]$ \\ \hline 
-\textbf{X[231]} & X[231] & $q_2X[2, 1, 3]$ & X[3, 2, 1] & $q_2X[3, 1, 2]$& $q_1q_2X[1, 2, 3]$& $q_1q_2X[1, 3, 2]$ \\ \hline
-\textbf{X[312]} & X[312] & $X[3, 2, 1]$ & $q_1X[1, 3, 2]$& $q_1q_2X[1, 2, 3]$&  & \\ \hline
-\textbf{X[321]} & X[321] & & & & & \\ \hline
+\textbf{X[231]} & $X[231]$ & $q_2X[2, 1, 3]$ & $X[3, 2, 1]$ & $q_2X[3, 1, 2]$& $q_1q_2X[1, 2, 3]$& $q_1q_2X[1, 3, 2]$ \\ \hline
+\textbf{X[312]} & $X[312]$ & $X[3, 2, 1]$ & $q_1X[1, 3, 2]$& $q_1q_2X[1, 2, 3]$& $q_1X[2, 3, 1]$ & $q_1q_2X[2, 1, 3]$ \\ \hline
+\textbf{X[321]} & $X[321]$ & $q_1q_2X[1, 2, 3] - q_1q_2X[1, 3, 2] + q_2X[3, 1, 2]$ & $q_1q_2X[1, 2, 3] - q_1q_2X[2, 1, 3] + q_1X[2, 3, 1]$ & $q_1q_2X[1, 3, 2]$ & $q_1q_2X[2, 1, 3]$ & $q_1q_2X[2, 3, 1] + q_1q_2X[3, 1, 2] - q_1q_2X$\\ \hline
+\end{tabular}
+\end{table}
+
+
+\newpage
+\begin{table}[!h]
+\centering
+\caption{$Fl(3)$}
+\begin{tabular}{|p{1cm}|p{4cm}|p{6cm}|}
+\hline
+& \textbf{Elementary symmetric} & \textbf{Quantized elementary symmetric} \\ \hline 
+$e_1^1$ & $x_1$ & $x_1$ \\ \hline
+$e_1^2$ & $x_1 + x_2$ & $x_1 + x_2$ \\ \hline 
+$e_1^3$ & $x_1 + x_2 + x_3$ & $x_1 + x_2 + x_3$ \\ \hline 
+$e_2^2$ & $x_1x_2$ & $x_1x_2 + q_1$ \\ \hline 
+$e_2^3$ & $x_1x_2 + x_1x_3 + x_2x_3$ &  $x_1x_2 + x_1x_3 + x_2x_3 + q_1 + q_2$\\ \hline 
+$e_3^3$ & $x_1x_2x_3$ & $x_1x_2x_3 + q_1x_3 + x_1q_2$ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(3)$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
+\hline
+& \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 -x_1q_1$ \\ \hline
+$f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
+$f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3)$ \\ \hline 
+$f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
+$f_2^3$ & $3 - 2x_1 - 2x_2 -2x_3 +x_1x_2 + x_2x_3 + x_1x_3$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_2)(1-x_3)(1-q_3) + (1-x_1)(1-x_3)(1-q_1)(1-q_3)$ \\ \hline 
+$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_1)(1-q_2)(1-q_3)$ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(3)$, assuming all $q_3$'s go to 0}
+\begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
+\hline
+& \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 -x_1q_1$ \\ \hline
+$f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
+$f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)$ \\ \hline 
+$f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
+$f_2^3$ & $3 - 2x_1 - 2x_2 -2x_3 +x_1x_2 + x_2x_3 + x_1x_3$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_2)(1-x_3) + (1-x_1)(1-x_3)(1-q_1)$ \\ \hline 
+$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_1)(1-q_2)$ \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage 
+\begin{table}[!h]
+\centering
+\caption{$Fl(3)$}
+\begin{tabular}{|p{2cm}|p{2.5cm}|p{6cm}|p{6cm}|}
+\hline
+\textbf{Perm} & \textbf{Grothendieck} & \textbf{Factored in e's} & \textbf{Factored in f's} \\ \hline
+123 & 1 & $e_0^1$& $f_0^1$ \\ \hline
+132 ($s_2$) & $x_1 + x_2 -x_1x_2$ & $e_1^2 - e_2^2$ & $f_0^1 - f_2^2$ \\ \hline
+213 ($s_1$) & $x_1$ & $e_1^1$ & $f_0^1 - f_1^1$ \\ \hline
+231 & $x_1x_2$ & $e_2^2$ & $f_0^1f_0^2 - f_0^1f_1^2 + f_0^1f_2^2$\\ \hline
+312 & $x_ 1^2$& $e_1^1e_2^1 - e_2^2$& $f_0^1f_0^2 - f_0^1f_2^2 - 2f_0^2f_1^1 + f_1^1f_1^2$\\ \hline
+321 & $x_1^2x_2$& $e_1^1e_2^2$& $(f_0^1 - f_1^1)(f_0^2 - f_1^2 + f_2^2)$\\ \hline
 \end{tabular}
 \end{table}
 \end{document}
+
+

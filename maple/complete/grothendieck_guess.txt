@@ -1,0 +1,126 @@
+_qebar := proc(ii, kk)
+   local i, j, res;
+   if ii=0 then
+      RETURN(1);
+   elif ii>kk or ii<0 then
+      RETURN(0);
+   fi;
+   res := _qebar( ii, kk-1 ) + (cat(x,kk))*(_qebar( ii-1, kk-1 )) + cat(q,kk-1)*(1-cat(x,kk-1))*(_qebar(ii-1,kk-2) + _qebar(ii-2, kk-2));
+   return( eval( res, [x0=0,q0=0] ) );
+end:
+
+
+_qfbar := proc(ii, kk)
+   local i, j, res;
+   if ii=0 then
+      RETURN(1);
+    elif ii>kk or ii<0 then
+      RETURN(0);
+   fi;
+   res := _qfbar( ii, kk-1 ) + (1-cat(x,kk))*(_qfbar( ii-1, kk-1 )) - cat(q,kk-1)*(1-cat(x,kk-1))*(_qfbar(ii-1,kk-2));
+   return( eval( res, [x0=0,q0=0] ) );
+end:
+
+
+_qf := ( ii, kk ) -> expand( _qfbar( ii, kk ) - cat(q,kk)*(1-cat(x,kk))*(_qfbar(ii-1,kk-1)) ) :
+
+_qf_nr := proc(p, k)
+	local S, i, n, ss, prod1, prod2, result;
+
+	if p = 0 then 
+		return 1;
+	elif p > k or p < 0 then
+		return 0;
+	end if;
+	
+	result := 0;
+	ss := combinat[choose]([seq(i,i=1..k)], p);
+    
+	for S in ss do
+		prod1 := 1;
+		prod2 := 1;
+	
+		for i in S do
+			prod1 := prod1 * (1 - cat(x,i));
+			
+			if not (i+1 in S) then
+				prod2 := prod2 * (1 - cat(q,i));
+			end if;
+		
+		end do;
+	
+	result := result + prod1 * prod2;
+	end do;
+	
+	return result;
+end:
+
+
+_qf_guess_nr := proc(A::Array, p, k)
+	local S, i, n, ss, prod1, prod2, result;
+
+	if p = 0 then 
+		return 1;
+	elif p > k or p < 0 then
+		return 0;
+	end if;
+		
+	result := 0;
+	ss := combinat[choose]([seq(A[i],i=1..k)], p);
+    
+	for S in ss do
+		prod1 := 1; prod2 := 1;
+		for i in S do
+			prod1 := prod1 * (1 - cat(x,i));
+			if not (i+1 in S) then
+				prod2 := prod2 * (1 - cat(q,i));
+			end if;
+		end do;
+	result := result + prod1 * prod2;
+	end do;
+	
+	return result;
+end:
+
+_qf_guess := ( ii, kk ) -> expand( _qfbar( ii, kk ) - cat(q,kk)*(1-cat(x,kk))*(_qfbar(ii-1,kk-1)) ) :
+
+# from equation 3.8 in LM
+_qehat_guess := proc(A::Array, p, k)
+	local i;
+	return convert( [seq( (-1)^i * (_qf_guess_nr(A, i, k)) * (binomial(k-i, p-i)), i=0..p )], `+`);
+end:
+
+_qebar_guess := proc(A::Array, p, k)
+	return eval(_qehat_guess(A, p, k), [cat(q,A[k])=0]);
+end:
+
+
+## Universal Substitutions
+f_sub := proc(A::Array, expr)
+	local i, j, result, rows, cols;
+	result := expr;
+	rows := LinearAlgebra[Dimension](A);
+	cols := LinearAlgebra[Dimension](A);
+
+	(* for i from 1 to cols do
+		result := subs(F[0, i] = 1, result);
+*)
+	
+	for i from 0 to rows do
+		for j from 0 to cols do
+			result := subs(F[i,j] = subs(q4=0,_qf_guess_nr(A, i, j)), result);
+		end do;
+	end do;
+	return result;
+end:
+
+ggp := proc(A::Array, w)
+	return f_sub(A, y_sub(ugp(w)));
+end:
+
+check_relation := proc(expr::algebraic, p::PolynomialIdeal) 
+	if IdealMembership(expr, <0>) then print("true, 0"); 
+	elif IdealMembership(expr, p) then print("true, in ideal"); 
+	else print(expr, "not in ideal"); 
+	end if; 
+end proc:

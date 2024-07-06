@@ -1,8 +1,6 @@
 QKChevTypeA:=module()
   option package;
-  export perms_with_descent,perm_inverse,perm_longest,perm_dual,perm_length,perm_compose,perm_reduced_word,
-  perm_hecke_act,perm_hecke_mult,perm_bruhat_leq,perm_deg2perm,two_kgw,two_kgw_table,qkmonk_inner,
-  qkmonk_single,qkmonk,qkmonk_table,minrep_GP_A,qkmonk_GP_A_table,qkmonk_GP_A_inner,qkmonk_GP_A_guess,qkmonk_3step_check;
+  export perms_with_descent, qkmonk_GP_A_table, perm_inverse,perm_longest,perm_dual,perm_length,perm_compose,perm_reduced_word,perm_hecke_act,perm_hecke_mult,perm_bruhat_leq,perm_deg2perm,two_kgw,two_kgw_table,qkmonk_inner,qkmonk_single,qkmonk,qkmonk_table,minrep_GP_A,qkmonk_GP_A_inner,qkmonk_GP_A_guess,qkmonk_3step_check;
 
 # gets all permutations in S_n with descents at subset of elements in F
 perms_with_descent := proc(F)
@@ -30,6 +28,18 @@ perms_with_descent := proc(F)
 		end if;
 	end do;
 	return descent_perms;
+end proc;
+
+# monk table for any partial flag
+qkmonk_GP_A_table := proc(F)
+	local perm, t, descent_perms, transpositions;
+	descent_perms := perms_with_descent(F);
+	transpositions := [F[2], F[3]];
+	for perm in descent_perms do
+		for t in transpositions do
+			lprint(t, perm,qkmonk_GP_A_inner(t,perm,F));
+		end do;
+	end do;
 end proc;
 
 
@@ -112,7 +122,7 @@ perm_deg2perm := proc(d)
     seq(`if`(d[n-i]>=j,n-i,NULL),i=0..n-1)]), j=1..m)]);
 end:
 
-
+# determines whether a permutation v is led w0ud in Bruhat order
 two_kgw := proc(u, v, d)
   local w0ud;
   w0ud := perm_hecke_mult(perm_dual(u), perm_deg2perm(d));
@@ -192,17 +202,6 @@ minrep_GP_A := proc(w,a) # a=[0,a_1,...,a_m,n]; Fl(a_1,...,a_m,n); a_i=a_j allow
     end do;
     rep;
 end proc:  
-
-qkmonk_GP_A_table := proc(F)
-	local perm, t, descent_perms, transpositions;
-	descent_perms := perms_with_descent(F);
-	transpositions := [F[2], F[3]];
-	for perm in descent_perms do
-		for t in transpositions do
-			lprint(t, perm,qkmonk_GP_A_inner(t,perm,F));
-		end do;
-	end do;
-end proc;
 
 qkmonk_GP_A_inner:=proc(p,w,a) # w is minimal representative; a=[0,a_1,...,a_m,n]; Fl(a_1,...,a_m,n); p \in {a_1,...,a_m}; a_i=a_j allowed
     local prd,terms,qlst,qsb,Gs,Gsb,x,i,n;
