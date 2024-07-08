@@ -431,6 +431,10 @@ where $(a_1, b_1) \prec (a_2,b_2) \prec \ldots \prec (a_s,b_s)$.
 
 For calculations with quantum Grothendiecks, there is the following \href{https://ow3.math.rutgers.edu/~asbuch/equivcalc/}{Maple Package for Quantum Grothendiecks}.
 
+\section{Quantum Grothendiecks in Partial Flags}
+
+
+
 \newpage
 
 \begin{table}[!h]
@@ -490,6 +494,55 @@ $\times$ & \textbf{X[123]} & \textbf{X[132]} & \textbf{X[213]} & \textbf{X[231]}
 \newpage
 \begin{table}[!h]
 \centering
+\caption{$Fl(2)$}
+\begin{tabular}{|p{1cm}|p{5cm}|p{7cm}|}
+\hline
+& \textbf{Elementary symmetric} & \textbf{Quantized elementary symmetric} \\ \hline 
+$e_1^1$ & $x_1$ & $x_1$ \\ \hline
+$e_1^2$ & $x_1 + x_2$ & $x_1 + x_2$ \\ \hline 
+$e_2^2$ & $x_1x_2$ & $x_1x_2 + q_1$ \\ \hline 
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(2)$}
+\begin{tabular}{|p{1cm}|p{6.5cm}|p{9cm}|}
+\hline
+& \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 -x_1q_1$ \\ \hline
+$f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
+$f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(2)$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{5cm}|}
+\hline
+$(p, k)$& \textbf{$\hat{E}_p^k$} & \textbf{$\overline{E}_p^k$} \\ \hline 
+$(1, 1)$ & $x_1 + q_1 - x_1q_1$ & $x_1$ \\ \hline
+$(1, 2)$ & $x_1 + x_2 + (q_1 + q_2)(1- x_1 - x_2)$ & $x_1 + x_2 + q_1(1 - x_1)$ \\ \hline 
+$(2, 2)$ & $x_1x_2  + q_1(1 - x_1) + q_2(x_1 - x_1x_2)$ & $x_1x_2 + q_1 (1 - x_1)$  \\ \hline 
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(2)$}
+\begin{tabular}{|p{2cm}|p{2.5cm}|p{6cm}|p{6cm}|}
+\hline
+\textbf{Perm} & \textbf{Grothendieck} & \textbf{Factored in e's} & \textbf{Factored in f's} \\ \hline
+12 & 1 & $e_0^1$ & $f_0^1$ \\ \hline
+21 & $x_1$ & $e_1^1$ & $f_0^1 - f_1^1$ \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[!h]
+\centering
 \caption{$Fl(3)$}
 \begin{tabular}{|p{1cm}|p{4cm}|p{6cm}|}
 \hline
@@ -531,7 +584,7 @@ $f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline
 $f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)$ \\ \hline 
 $f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
 $f_2^3$ & $3 - 2x_1 - 2x_2 -2x_3 +x_1x_2 + x_2x_3 + x_1x_3$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_2)(1-x_3) + (1-x_1)(1-x_3)(1-q_1)$ \\ \hline 
-$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_1)(1-q_2)$ \\ \hline
+$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)$ \\ \hline
 \end{tabular}
 \end{table}
 
