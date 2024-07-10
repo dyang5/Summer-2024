@@ -439,7 +439,7 @@ For calculations with quantum Grothendiecks, there is the following \href{https:
 
 \begin{table}[!h]
 \centering
-\caption{Grothendiecks for $S^3$}
+\caption{Grothendiecks for $Fl(3)$}
 \begin{tabular}{|p{2cm}|c|p{10cm}|}
 \hline
 Permutation &  Grothendieck  &  Quantum Grothendieck  \\ \hline
@@ -588,6 +588,21 @@ $f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_
 \end{tabular}
 \end{table}
 
+\begin{table}[!h]
+\centering
+\caption{$Fl(3)$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{5cm}|}
+\hline
+$(p, k)$& \textbf{$\hat{E}_p^k$} & \textbf{$\overline{E}_p^k$} \\ \hline 
+$(1, 1)$ & $x_1 + q_1 - x_1q_1$ & $x_1$ \\ \hline
+$(1, 2)$ & $x_1 + x_2 + (q_1 + q_2)(1- x_1 - x_2)$ & $x_1 + x_2 + q_1(1 - x_1)$ \\ \hline 
+$(1, 3)$ & $x_1 + x_2 + x_3 (q_1 + q_2 + q_3)(1- x_1 - x_2 - x_3)$ & $x_1 + x_2 + q_1(1 - x_1) + x_3 + q_2(1 - x_2)$ \\ \hline 
+$(2, 2)$ & $q_1(1 - x_1) + x_1(x_2 + q_2 - q_2x_2)$ & $x_1x_2 + q_1(1-x_1)$\\ \hline 
+$(2, 3)$ & $(((x_3 - 1)q_3 - x_3 - 1)q_1 + q_3(1 - x_3) + x_3 + (-q_2 + 1)x_2 + q_2)x_1 + (q_3(1 - x_3) + x_3 + 1)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2)$& $x_1x_2 + q_1(1-x_1) + x_3(x_1 + x_2 + q_1(1-x_1)) + q_2(1-x_2)(1+x_1)$\\ \hline 
+$(3, 3)$ & $(((x_3 - 1)q_3 - x_3)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2))x_1 - ((x_3 - 1)q_3 - x_3)q_1$ & $x_3(x_2x_1 + q_1(1-x_1)) + q_2(1-x_2)x_1$ \\ \hline 
+\end{tabular}
+\end{table}
+
 \newpage 
 \begin{table}[!h]
 \centering
@@ -601,6 +616,26 @@ $f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_
 231 & $x_1x_2$ & $e_2^2$ & $f_0^1f_0^2 - f_0^1f_1^2 + f_0^1f_2^2$\\ \hline
 312 & $x_ 1^2$& $e_1^1e_2^1 - e_2^2$& $f_0^1f_0^2 - f_0^1f_2^2 - 2f_0^2f_1^1 + f_1^1f_1^2$\\ \hline
 321 & $x_1^2x_2$& $e_1^1e_2^2$& $(f_0^1 - f_1^1)(f_0^2 - f_1^2 + f_2^2)$\\ \hline
+\end{tabular}
+\end{table}
+
+\newpage 
+
+\begin{table}[!h]
+\centering
+\caption{$Fl(4)$}
+\begin{tabular}{|p{1cm}|p{4cm}|p{6cm}|}
+\hline
+& \textbf{Elementary symmetric} & \textbf{Quantized elementary symmetric} \\ \hline 
+$e_1^1$ & $x_1$ & $x_1$ \\ \hline
+$e_1^2$ & $x_1 + x_2$ & $x_1 + x_2$ \\ \hline 
+$e_1^3$ & $x_1 + x_2 + x_3$ & $x_1 + x_2 + x_3$ \\ \hline 
+$e_1^4$ & $x_1 + x_2 + x_3 + x_4$ & $x_1 + x_2 + x_3 + x_4$ \\ \hline 
+$e_2^2$ & $x_1x_2$ & $x_1x_2 + q_1$ \\ \hline 
+$e_2^3$ & $x_1x_2 + x_1x_3 + x_2x_3$ &  $x_1x_2 + x_1x_3 + x_2x_3 + q_1 + q_2$\\ \hline 
+$e_2^4$ & $x_1x_2 + x_1x_3 + x_2x_3 + x_1x_4 + x_2x_4 + x_3x_4$ & $x_1x_2 + x_1x_3 + x_2x_3 + x_1x_4 + x_2x_4 + x_3x_4 + q_1 + q_2 + q_3$ \\ \hline 
+$e_3^3$ & $x_1x_2x_3$ & $x_1x_2x_3 + q_1x_3 + x_1q_2$ \\ \hline
+$e_3^4$ & $x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4$ &  \\ \hline
 \end{tabular}
 \end{table}
 \end{document}
