@@ -434,8 +434,13 @@ For calculations with quantum Grothendiecks, there is the following \href{https:
 \section{Quantum Grothendiecks in Partial Flags}
 
 
-
 \newpage
+
+\section{Appendix}
+
+\textcolor{red}{To-do: Quantum schuberts for Fl(1, 2, 4) and Fl(1, 3, 4)}
+
+
 
 \begin{table}[!h]
 \centering
@@ -543,7 +548,7 @@ $(2, 2)$ & $x_1x_2  + q_1(1 - x_1) + q_2(x_1 - x_1x_2)$ & $x_1x_2 + q_1 (1 - x_1
 
 \begin{table}[!h]
 \centering
-\caption{$Fl(3)$}
+\caption{Elementary (Quantized) Symmetrics in $Fl(3)$}
 \begin{tabular}{|p{1cm}|p{4cm}|p{6cm}|}
 \hline
 & \textbf{Elementary symmetric} & \textbf{Quantized elementary symmetric} \\ \hline 
@@ -559,11 +564,11 @@ $e_3^3$ & $x_1x_2x_3$ & $x_1x_2x_3 + q_1x_3 + x_1q_2$ \\ \hline
 
 \begin{table}[!h]
 \centering
-\caption{$Fl(3)$}
+\caption{$f$ and $F$ terms in $Fl(3)$}
 \begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
 \hline
 & \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
-$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 -x_1q_1$ \\ \hline
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 +x_1q_1$ \\ \hline
 $f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
 $f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3)$ \\ \hline 
 $f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
@@ -575,11 +580,11 @@ $f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_
 
 \begin{table}[!h]
 \centering
-\caption{$Fl(3)$, assuming all $q_3$'s go to 0}
+\caption{$f$ and $F$ in $Fl(3)$, assuming all $q_3$'s go to 0}
 \begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
 \hline
 & \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
-$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 -x_1q_1$ \\ \hline
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 + x_1q_1$ \\ \hline
 $f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
 $f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)$ \\ \hline 
 $f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
@@ -590,13 +595,13 @@ $f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_
 
 \begin{table}[!h]
 \centering
-\caption{$Fl(3)$}
+\caption{$\hat{E}$ and $\overline{E}$ terms for $Fl(3)$}
 \begin{tabular}{|p{1cm}|p{6cm}|p{5cm}|}
 \hline
 $(p, k)$& \textbf{$\hat{E}_p^k$} & \textbf{$\overline{E}_p^k$} \\ \hline 
 $(1, 1)$ & $x_1 + q_1 - x_1q_1$ & $x_1$ \\ \hline
 $(1, 2)$ & $x_1 + x_2 + (q_1 + q_2)(1- x_1 - x_2)$ & $x_1 + x_2 + q_1(1 - x_1)$ \\ \hline 
-$(1, 3)$ & $x_1 + x_2 + x_3 (q_1 + q_2 + q_3)(1- x_1 - x_2 - x_3)$ & $x_1 + x_2 + q_1(1 - x_1) + x_3 + q_2(1 - x_2)$ \\ \hline 
+$(1, 3)$ & $x_1 + x_2 + x_3 + q_1 + q_2 + q_3 - (q_1x_1 + q_2x_2 + q_3x_3)$ & $x_1 + x_2 + x_3 + q_1(1 - x_1) + q_2(1 - x_2)$ \\ \hline 
 $(2, 2)$ & $q_1(1 - x_1) + x_1(x_2 + q_2 - q_2x_2)$ & $x_1x_2 + q_1(1-x_1)$\\ \hline 
 $(2, 3)$ & $(((x_3 - 1)q_3 - x_3 - 1)q_1 + q_3(1 - x_3) + x_3 + (-q_2 + 1)x_2 + q_2)x_1 + (q_3(1 - x_3) + x_3 + 1)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2)$& $x_1x_2 + q_1(1-x_1) + x_3(x_1 + x_2 + q_1(1-x_1)) + q_2(1-x_2)(1+x_1)$\\ \hline 
 $(3, 3)$ & $(((x_3 - 1)q_3 - x_3)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2))x_1 - ((x_3 - 1)q_3 - x_3)q_1$ & $x_3(x_2x_1 + q_1(1-x_1)) + q_2(1-x_2)x_1$ \\ \hline 
@@ -606,7 +611,7 @@ $(3, 3)$ & $(((x_3 - 1)q_3 - x_3)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2))
 \newpage 
 \begin{table}[!h]
 \centering
-\caption{$Fl(3)$}
+\caption{Decomposed Grothendiecks in $Fl(3)$}
 \begin{tabular}{|p{2cm}|p{2.5cm}|p{6cm}|p{6cm}|}
 \hline
 \textbf{Perm} & \textbf{Grothendieck} & \textbf{Factored in e's} & \textbf{Factored in f's} \\ \hline
@@ -623,7 +628,7 @@ $(3, 3)$ & $(((x_3 - 1)q_3 - x_3)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2))
 
 \begin{table}[!h]
 \centering
-\caption{$Fl(4)$}
+\caption{Elementary (Quantized) Symmetrics in $Fl(4)$}
 \begin{tabular}{|p{1cm}|p{4cm}|p{6cm}|}
 \hline
 & \textbf{Elementary symmetric} & \textbf{Quantized elementary symmetric} \\ \hline 
@@ -635,9 +640,67 @@ $e_2^2$ & $x_1x_2$ & $x_1x_2 + q_1$ \\ \hline
 $e_2^3$ & $x_1x_2 + x_1x_3 + x_2x_3$ &  $x_1x_2 + x_1x_3 + x_2x_3 + q_1 + q_2$\\ \hline 
 $e_2^4$ & $x_1x_2 + x_1x_3 + x_2x_3 + x_1x_4 + x_2x_4 + x_3x_4$ & $x_1x_2 + x_1x_3 + x_2x_3 + x_1x_4 + x_2x_4 + x_3x_4 + q_1 + q_2 + q_3$ \\ \hline 
 $e_3^3$ & $x_1x_2x_3$ & $x_1x_2x_3 + q_1x_3 + x_1q_2$ \\ \hline
-$e_3^4$ & $x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4$ &  \\ \hline
+$e_3^4$ & $x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4$ & $x_1x_2x_3 + q_1x_3 + q_1x_4 + x_1q_2 + x_4q_2 + x_1q_3 + x_2q_3$ \\ \hline
+$e_4^4$ & $x_1x_2x_3x_4$ & $x_1x_2x_3x_4 + x_3x_4q_1 + x_1x_4q_2 + x_1x_2q_3$  \\ \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$f$ and $F$ terms in $Fl(4)$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
+\hline
+& \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 +x_1q_1$ \\ \hline
+$f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
+$f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3)$ \\ \hline 
+$f_1^4$ & $4 - x_1 - x_2 - x_3 - x_4$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3) + (1-x_4)(1-q_4)$ \\ \hline 
+$f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
+$f_2^3$ & $3 - 2x_1 - 2x_2 -2x_3 +x_1x_2 + x_2x_3 + x_1x_3$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_2)(1-x_3)(1-q_3) + (1-x_1)(1-x_3)(1-q_1)(1-q_3)$ \\ \hline 
+$f_2^4$ & $4 - 3x_1 - 3x_2 -3x_3 - 3x_4+x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_1)(1-x_3)(1-q_1)(1-q_3) + (1-x_1)(1-x_4)(1-q_1)(1-q_4) + (1-x_2)(1-x_3)(1-q_3) + (1-x_2)(1-x_4)(1-q_2)(1-q_4) + (1-x_3)(1-x_4)(1-q_4)$\\ \hline 
+$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_1)(1-q_2)(1-q_3)$ \\ \hline
+$f_3^4$ & $4 - 3 (x_1 + x_2 + x_3 + x_4) +  2(x_1x_2 + x_1x_3 + x_2x_3 + x_2x_4 + x_3x_4) - (x_1 x_2 x_3 + x_1 x_2 x_4 + x_1 x_3 x_4 + x_2 x_3 x_4)$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_3) + (1-x_1)(1-x_2)(1-x_4)(1-q_4) + (1-x_1)(1-x_3)(1-x_4)(1-q_1)(1-q_4) + (1-x_2)(1-x_3)(1-x_4)(1-q_4)$ \\ \hline
+$f_4^4$ & $1 - (x_1 + x_2 + x_3 + x_4) + (x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4) - (x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4) + x_1x_2x_3x_4$ & $(1-x_1)(1-x_2)(1-x_3)(1-x_4)(1-q_4)$ \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$f$ and $F$ terms in $Fl(4)$, assuming all $q_4$'s go to $0$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{9cm}|}
+\hline
+& \textbf{Elementary symmetric in $(1-x_i)$ ($f_p^k$)} & \textbf{Quantized elementary symmetric in $(1-x_i)$ ($F_p^k$)} \\ \hline 
+$f_1^1$ & $1 - x_1$ & $1 - x_1 - q_1 +x_1q_1$ \\ \hline
+$f_1^2$ & $2 - x_1 - x_2$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2)$ \\ \hline 
+$f_1^3$ & $3 -x_1 - x_2 -x_3$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3)$ \\ \hline 
+$f_1^4$ & $4 - x_1 - x_2 - x_3 - x_4$ & $(1-x_1)(1-q_1) + (1-x_2)(1-q_2) + (1-x_3)(1-q_3) + (1-x_4)$ \\ \hline 
+$f_2^2$ & $1-x_1-x_2+x_1x_2$ & $(1-x_1)(1-x_2)(1-q_2)$  \\ \hline 
+$f_2^3$ & $3 - 2x_1 - 2x_2 -2x_3 +x_1x_2 + x_2x_3 + x_1x_3$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_2)(1-x_3)(1-q_3) + (1-x_1)(1-x_3)(1-q_1)(1-q_3)$ \\ \hline 
+$f_2^4$ & $4 - 3x_1 - 3x_2 -3x_3 - 3x_4+x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4$ & $(1-x_1)(1-x_2)(1-q_2) + (1-x_1)(1-x_3)(1-q_1)(1-q_3) + (1-x_1)(1-x_4)(1-q_1) + (1-x_2)(1-x_3)(1-q_3) + (1-x_2)(1-x_4)(1-q_2) + (1-x_3)(1-x_4)$\\ \hline 
+$f_3^3$ & $1-x_1-x_2-x_3 + x_1x_2 + x_1x_3 + x_2x_3 - x_1x_2x_3$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_1)(1-q_2)(1-q_3)$ \\ \hline
+$f_3^4$ & $4 - 3 (x_1 + x_2 + x_3 + x_4) +  2(x_1x_2 + x_1x_3 + x_2x_3 + x_2x_4 + x_3x_4) - (x_1 x_2 x_3 + x_1 x_2 x_4 + x_1 x_3 x_4 + x_2 x_3 x_4)$ & $(1-x_1)(1-x_2)(1-x_3)(1-q_3) + (1-x_1)(1-x_2)(1-x_4) + (1-x_1)(1-x_3)(1-x_4)(1-q_1) + (1-x_2)(1-x_3)(1-x_4)$ \\ \hline
+$f_4^4$ & $1 - (x_1 + x_2 + x_3 + x_4) + (x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4) - (x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4) + x_1x_2x_3x_4$ & $(1-x_1)(1-x_2)(1-x_3)(1-x_4) $ \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{$\hat{E}$ and $\overline{E}$ terms for $Fl(4)$}
+\begin{tabular}{|p{1cm}|p{6cm}|p{5cm}|}
+\hline
+$(p, k)$& \textbf{$\hat{E}_p^k$} & \textbf{$\overline{E}_p^k$} \\ \hline 
+$(1, 1)$ & $x_1 + q_1 - x_1q_1$ & $x_1$ \\ \hline
+$(1, 2)$ & $x_1 + x_2 + (q_1 + q_2)(1- x_1 - x_2)$ & $x_1 + x_2 + q_1(1 - x_1)$ \\ \hline 
+$(1, 3)$ & $x_1 + x_2 + x_3 + q_1 + q_2 + q_3 - (q_1x_1 + q_2x_2 + q_3x_3)$ & $x_1 + x_2 + x_3 + q_1(1 - x_1) + q_2(1 - x_2)$ \\ \hline $(1, 4)$ & $(x_1 + x_2 + x_3 + x_4) + q_1 + q_2 + q_3 + q_4 - (q_1x_1 + q_2x_2 + q_3x_3 + q_4x_4)$ & $(x_1 + x_2 + x_3 + x_4) + q_1 + q_2 + q_3 - (q_1x_1 + q_2x_2 + q_3x_3)$ \\ \hline 
+$(2, 2)$ & $q_1(1 - x_1) + x_1(x_2 + q_2 - q_2x_2)$ & $x_1x_2 + q_1(1-x_1)$\\ \hline 
+$(2, 3)$ & $(((x_3 - 1)q_3 - x_3 - 1)q_1 + q_3(1 - x_3) + x_3 + (-q_2 + 1)x_2 + q_2)x_1 + (q_3(1 - x_3) + x_3 + 1)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2)$& $x_1x_2 + q_1(1-x_1) + x_3(x_1 + x_2 + q_1(1-x_1)) + q_2(1-x_2)(1+x_1)$\\ \hline 
+$(2, 4)$ & $(((x_4 - 1)q_4 - x_4 + (q_3 - 1x_3 - q_3 - 1)q_1 + q_4 - x_4) + x_4 + (1 - q_2)x_2 + (-q_3 + 1)x_3 + q_2 + q_3)x_1 + (q_4 - x_4) + x_4 + (-q_3 + 1)x_3 + q_3 + 1)q_1 + (x_4 - 1)((-1 + q_2)x_2 - q_2 - x_3)q_4 + ((1 - q_2)x_2 + q_2 + x_3)x_4 + ((-q_3 + 1)x_3 - q_2 + q_3)x_2 - q_3*x_3 + q_2 + q_3$ & $x_2*x_1 - (x_1 - 1)q_1 + x_3*x_1 + x_2 + q_1 - x_1)) - q_2*x_2 - 1)(x_1 + 1) - ((q_1 - 1)x_1 + (-1 + q_2)x_2 - x_3 - q_1 - q_2)x_4 + ((q_1 - 1)x_1 - x_2 - q_1 - 1)q_3(x_3 - 1)$\\ \hline
+$(3, 3)$ & $(((x_3 - 1)q_3 - x_3)q_1 - x_2(x_3 - 1)q_3 + x_2x_3 - q_2(-1 + x_2))x_1 - ((x_3 - 1)q_3 - x_3)q_1$ & $x_3(x_2x_1 + q_1(1-x_1)) + q_2(1-x_2)x_1$ \\ \hline 
+$(3, 4)$ & redacted for brevity & redacted for brevity \\ \hline 
+$(4, 4)$ & redacted for brevity & redacted for brevity \\ \hline 
+\end{tabular}
+\end{table}
+
 \end{document}
 
 
