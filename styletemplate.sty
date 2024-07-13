@@ -19,6 +19,32 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{scrextend}
 \usepackage{array}
+\usepackage{listings}
+
+\lstdefinelanguage{Maple}{
+  morekeywords={and, assuming, break, by, catch, description, do, done, elif, else, end, error, export, fi, finally, for, from, global, if, import, in, intersect, local, minus, mod, not, option, options, or, proc, quit, read, save, then, to, try, use, uses, when, while, xor},
+  sensitive=true,
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[s]{`}{`}
+}
+
+\lstset{ %
+  language=Maple,                  % the language of the code
+  basicstyle=\ttfamily%
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize\ttfamily, % the size and type of the fonts that are used for the code
+  breakatwhitespace=false,         % automatic breaks at whitespace
+  breaklines=true,                 % automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{ForestGreen},      % comment style
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{red},         % string literal style
+  tabsize=2                        % sets default tabsize to 2 spaces
+}
+
+
 \usetikzlibrary{decorations.pathreplacing}
 \hypersetup{
    urlcolor=blue,

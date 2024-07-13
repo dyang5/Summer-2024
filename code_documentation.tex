@@ -10,7 +10,25 @@
 
 \maketitle
 
-\section{Quantum Schuberts}
+For all code testing, be sure to import the proper files (\texttt{modified\_qkcalc.txt}, \texttt{all\_working.txt}, and \texttt{QKChevTypeA.txt}). \\
 
+To define a particular flag, define and specify an array, as follows
+\begin{lstlisting}[language = Maple]
+# define A as Fl(1, 3, 4)
+local A := Array(1..3, [1, 3, 4]):
+\end{lstlisting}
+
+You will need to pass your defined flag into each function that requires an Array as a parameter to specify the partial flag you are working under.
+
+\section{Quantum Schuberts}
+\begin{itemize}
+    \item \texttt{usp(perm)} returns the universal schubert polynomial for perm in the full flag
+    \item \texttt{sp(perm)} returns the quantum schubert polynomial of perm in the full flag
+    \item \texttt{\_sp(A, perm)} returns the quantum schubert polynomial corresponding to perm in flag $A$
+    \item \texttt{print\_all\_qs(A)} prints all quantum schuberts in the basis of the quantum cohomology of flag $A$
+    \item \texttt{qs\_pf\_basis(A)} returns the basis of quantum schuberts in the quantum cohomology of flag $A$
+    \item \texttt{check\_cioFonFlag\_relations($A$)} confirms that in $A = Fl(1, 3, 4)$, quantum Schuberts match quantum Giambelli polynomials from Table 1 in Ciocan-Fontanine
+    
+\end{itemize}
 \section{Quantum Grothendiecks}
 \end{document}
