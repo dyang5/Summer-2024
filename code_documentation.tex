@@ -28,7 +28,14 @@ You will need to pass your defined flag into each function that requires an Arra
     \item \texttt{print\_all\_qs(A)} prints all quantum schuberts in the basis of the quantum cohomology of flag $A$
     \item \texttt{qs\_pf\_basis(A)} returns the basis of quantum schuberts in the quantum cohomology of flag $A$
     \item \texttt{check\_cioFonFlag\_relations($A$)} confirms that in $A = Fl(1, 3, 4)$, quantum Schuberts match quantum Giambelli polynomials from Table 1 in Ciocan-Fontanine
-    
 \end{itemize}
 \section{Quantum Grothendiecks}
+\begin{itemize}
+    \item \texttt{qkmonk\_GP\_A\_table($F^*$)} prints the Monk/Chevalley relations for flag $F$. \textit{note: $F^*$ refers to the fact that the flag $F$ must be written with a leading zero, so $Gr(2, 4) = [0, 2, 4]$}
+    \item \texttt{sp(perm)} returns the quantum schubert polynomial of perm in the full flag
+    \item \texttt{\_sp(A, perm)} returns the quantum schubert polynomial corresponding to perm in flag $A$
+    \item \texttt{print\_all\_qs(A)} prints all quantum schuberts in the basis of the quantum cohomology of flag $A$
+    \item \texttt{qs\_pf\_basis(A)} returns the basis of quantum schuberts in the quantum cohomology of flag $A$
+    \item \texttt{check\_cioFonFlag\_relations($A$)} confirms that in $A = Fl(1, 3, 4)$, quantum Schuberts match quantum Giambelli polynomials from Table 1 in Ciocan-Fontanine
+\end{itemize}
 \end{document}
