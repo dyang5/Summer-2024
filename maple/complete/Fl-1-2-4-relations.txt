@@ -1,45 +1,45 @@
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[1,3,2,4]) - (ggp(A, [2,3,1,4]) - ggp(A,[3,2,1,4]) + ggp(A,[3,1,2,4])) );
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[1,3,2,4]) - (ggp(A, [2,3,1,4]) - ggp(A,[3,2,1,4]) + ggp(A,[3,1,2,4])), qg_ideal );
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[1,3,2,4]) - (ggp(A, [1,4,2,3]) + ggp(A,[2,3,1,4]) - ggp(A,[2,4,1,3])) );
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[1,3,2,4]) - (ggp(A, [1,4,2,3]) + ggp(A,[2,3,1,4]) - ggp(A,[2,4,1,3])), qg_ideal );
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[1,4,2,3]) - (ggp(A, [2,4,1,3]) - ggp(A,[4,2,1,3]) + ggp(A,[4,1,2,3])) ) ;
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[1,4,2,3]) - (ggp(A, [2,4,1,3]) - ggp(A,[4,2,1,3]) + ggp(A,[4,1,2,3])), qg_ideal ) ;
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[1,4,2,3]) - (q2*ggp(A,[1,2,3,4]) - q2*ggp(A,[2,1,3,4]) + ggp(A,[2,4,1,3])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[1,4,2,3]) - (q2*ggp(A,[1,2,3,4]) - q2*ggp(A,[2,1,3,4]) + ggp(A,[2,4,1,3])), qg_ideal);
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,1,3,4]) - (q1*ggp(A,[1,2,3,4]) - q1*ggp(A,[1,3,2,4]) + ggp(A,[3,1,2,4])) );
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,1,3,4]) - (q1*ggp(A,[1,2,3,4]) - q1*ggp(A,[1,3,2,4]) + ggp(A,[3,1,2,4])), qg_ideal );
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,1,3,4]) - (ggp(A,[2,3,1,4]) - ggp(A,[3,2,1,4]) + ggp(A,[3,1,2,4])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,1,3,4]) - (ggp(A,[2,3,1,4]) - ggp(A,[3,2,1,4]) + ggp(A,[3,1,2,4])), qg_ideal);
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,3,1,4]) - ggp(A,[3,2,1,4]));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,3,1,4]) - ggp(A,[3,2,1,4])), qg_ideal;
   
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,3,1,4]) - ggp(A,[2,4,1,3]));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,3,1,4]) - ggp(A,[2,4,1,3])), qg_ideal;
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,4,1,3]) - (ggp(A,[3,4,1,2]) - ggp(A,[4,3,1,2]) + ggp(A,[4,2,1,3])));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[2,4,1,3]) - (ggp(A,[3,4,1,2]) - ggp(A,[4,3,1,2]) + ggp(A,[4,2,1,3])), qg_ideal);
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,4,1,3]) - (q2*ggp(A,[2,1,3,4] - q2*ggp(A,[3,1,2,4]) + ggp(A,[3,4,1,2]))) );
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[2,4,1,3]) - (q2*ggp(A,[2,1,3,4] - q2*ggp(A,[3,1,2,4]) + ggp(A,[3,4,1,2])), qg_ideal) );
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,1,2,4]) - (q1*ggp(A,[1,3,2,4]) - q1*(ggp(A,[1,4,2,3]) + ggp(A, [4,1,2,3]))) );
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,1,2,4]) - (q1*ggp(A,[1,3,2,4]) - q1*(ggp(A,[1,4,2,3]) + ggp(A, [4,1,2,3])), qg_ideal) );
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,1,2,4]) - (ggp(A, [4,1,2,3]) - ggp(A,[4,2,1,3]) + ggp(A,[3,2,1,4])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,1,2,4]) - (ggp(A, [4,1,2,3]) - ggp(A,[4,2,1,3]) + ggp(A,[3,2,1,4])), qg_ideal);
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,2,1,4]) - (q1*ggp(A,[2,3,1,4]) - q1*ggp(A,[2,4,1,3]) + ggp(A,[4,2,1,3])));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,2,1,4]) - (q1*ggp(A,[2,3,1,4]) - q1*ggp(A,[2,4,1,3]) + ggp(A,[4,2,1,3])), qg_ideal);
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,2,1,4]) - (ggp(A,[3,4,1,2]) -ggp(A,[4,3,1,2]) + ggp(A,[4,2,1,3])) );
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,2,1,4]) - (ggp(A,[3,4,1,2]) -ggp(A,[4,3,1,2]) + ggp(A,[4,2,1,3])), qg_ideal );
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,4,1,2]) - (ggp(A,[4,3,1,2])));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[3,4,1,2]) - (ggp(A,[4,3,1,2])), qg_ideal);
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,4,1,2]) - (q2*ggp(A,[3,1,2,4])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[3,4,1,2]) - (q2*ggp(A,[3,1,2,4])), qg_ideal);
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,1,2,3]) - (q1*ggp(A,[1,4,2,3])));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,1,2,3]) - (q1*ggp(A,[1,4,2,3])), qg_ideal);
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,1,2,3]) - (ggp(A,[4,2,1,3])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,1,2,3]) - (ggp(A,[4,2,1,3])), qg_ideal);
 
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,2,1,3]) - (q1*q2*ggp(A,[1,2,3,4]) - q1*q2*ggp(A,[2,1,3,4])+q1*ggp(A,[2,4,1,3])) );
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,2,1,3]) - (q1*q2*ggp(A,[1,2,3,4]) - q1*q2*ggp(A,[2,1,3,4])+q1*ggp(A,[2,4,1,3])), qg_ideal );
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,2,1,3]) - (q1*q2*ggp(A,[1,2,3,4]) - q1*q2*ggp(A,[1,3,2,4]) + ggp(A,[4,3,1,2])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,2,1,3]) - (q1*q2*ggp(A,[1,2,3,4]) - q1*q2*ggp(A,[1,3,2,4]) + ggp(A,[4,3,1,2])), qg_ideal);
 
-check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,3,1,2]) - (q1*q2*ggp(A,[1,3,2,4]) - q1*q2*ggp(A,[3,1,2,4]) + q1*ggp(A,[3,4,1,2])));
+check_relation(ggp(A,[2,1,3,4])*ggp(A,[4,3,1,2]) - (q1*q2*ggp(A,[1,3,2,4]) - q1*q2*ggp(A,[3,1,2,4]) + q1*ggp(A,[3,4,1,2])), qg_ideal);
 
-check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,3,1,2]) - (q1*q2*ggp(A,[1,3,2,4]) - q1*q2*ggp(A,[1,4,2,3]) + q2*ggp(A,[4,1,2,3])));
+check_relation(ggp(A,[1,3,2,4])*ggp(A,[4,3,1,2]) - (q1*q2*ggp(A,[1,3,2,4]) - q1*q2*ggp(A,[1,4,2,3]) + q2*ggp(A,[4,1,2,3])), qg_ideal);
 
