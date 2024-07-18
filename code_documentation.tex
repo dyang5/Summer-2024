@@ -32,6 +32,10 @@ You will need to pass your defined flag into each function that requires an Arra
 \section{Quantum Grothendiecks}
 \begin{itemize}
     \item \texttt{qkmonk\_GP\_A\_table($F^*$)} prints the Monk/Chevalley relations for flag $F$. \textit{note: $F^*$ refers to the fact that the flag $F$ must be written with a leading zero, so $Gr(2, 4) = [0, 2, 4]$}
+    \begin{itemize}
+        \item \texttt{qkmonk\_GP\_A\_table($[0, 2, 3]$)} gives the Chevalley relations for $Gr(2, 3)$. 
+        \item imported from \texttt{QKChevTypeA.txt} code
+    \end{itemize}
     \item \texttt{sp(perm)} returns the quantum schubert polynomial of perm in the full flag
     \item \texttt{\_sp(A, perm)} returns the quantum schubert polynomial corresponding to perm in flag $A$
     \item \texttt{print\_all\_qs(A)} prints all quantum schuberts in the basis of the quantum cohomology of flag $A$
