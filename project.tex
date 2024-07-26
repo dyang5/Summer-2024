@@ -812,6 +812,15 @@ $\times$ & \textbf{[],1234} & \textbf{[1],2314}  & \textbf{[2],3124} & \textbf{[
 \textbf{4123} & X[4123] & qX[1234] & qX[2314] & qX[3124] \\ \hline
 \end{tabular}
 \end{table}
+
+\newpage
+
+\begin{definition}
+    Let $[n]$ denote $\{1, \ldots, n\}$. Fix a flag $Fl(a_1,\ldots,a_n)$, and let $a_0 = 0$ and $a_n = n$.  We define $F_p^{n_l}$ by $F_0^{n_l} = 1$ and, for $p\geq 1$, $1 \leq l \leq n$ by
+    \begin{equation*}
+        F_p^{n_l} = \sum_{\substack{I \subseteq k \\ |I| = p}} \prod_{i \in I}(1-x_i) \prod_{\substack{j \in [n] \\ [a_{j-1}+1, \ldots, a_j] \cap I \neq \emptyset \\ [a_{j}+1, \ldots, a_n] - I \neq \emptyset}}(1-q_j)
+    \end{equation*}
+\end{definition}
 \end{document}
 
 
