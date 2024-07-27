@@ -816,11 +816,35 @@ $\times$ & \textbf{[],1234} & \textbf{[1],2314}  & \textbf{[2],3124} & \textbf{[
 \newpage
 
 \begin{definition}
-    Let $[n]$ denote $\{1, \ldots, n\}$. Fix a flag $Fl(a_1,\ldots,a_n)$, and let $a_0 = 0$ and $a_n = n$.  We define $F_p^{n_l}$ by $F_0^{n_l} = 1$ and, for $p\geq 1$, $1 \leq l \leq n$ by
+    Fix a flag $Fl(n_1,\ldots,n_l;n)$, and let $n_0 = 0$ and $n_{l+1} = n$.  We define $F_p^{n_k}$ by $F_0^{n_k} = 1$ and, for $p\geq 1$, $1 \leq l \leq n$ by
     \begin{equation*}
-        F_p^{n_l} = \sum_{\substack{I \subseteq k \\ |I| = p}} \prod_{i \in I}(1-x_i) \prod_{\substack{j \in [n] \\ [a_{j-1}+1, \ldots, a_j] \cap I \neq \emptyset \\ [a_{j}+1, \ldots, a_n] - I \neq \emptyset}}(1-q_j)
+        F_p^{n_k} = \sum_{\substack{I \subseteq [n_k] \\ |I| = p}} \prod_{i \in I}(1-x_i) \prod_{\substack{j \in [n] \\ [a_{j-1}+1, \ldots, a_j] \cap I \neq \emptyset \\ [a_{j}+1, \ldots, a_n] - I \neq \emptyset}}(1-q_j)
     \end{equation*}
 \end{definition}
+
+Generalizations of recursions from LM:
+
+
+
+
+Conjecture:
+Define $\overline{F}_p^{n_k} = F_p^{n_k} \mid_{q_{k-1} = 0}$. \\
+(3.5) $F_p^{n_k} = \overline{F}_p^{n_k} - q_{k-1}\left((1-x_{n_{k-1}})\cdot \ldots \cdot (1-x_{n_k})\right) \cdot \overline{F}_{p-1}^{n_{k-1}}$.
+
+\begin{proof} 
+    \begin{align*}
+        F_p^{n_k} &= \overline{F_p^{n_k}} - q_{k-1} \left((1-x_{n_{k-1}})\cdot \ldots \cdot (1-x_{n_k})\right) \sum_{\substack{I \subseteq [n_k] \\ |I| = p}} \prod_{i \in I \backslash \{n_{k-1}, \ldots, n_k\}}(1-x_i) \prod_{\substack{j \in [n]\backslash \{n_{k-1}, \ldots, n_k\} \\ [a_{j-1}+1, \ldots, a_j] \cap I \neq \emptyset \\ [a_{j}+1, \ldots, a_n] - I \neq \emptyset}}(1-q_j)
+    \end{align*}
+\end{proof}
+
+hmm I don't feel good about this, with the q's. \\\
+
+
+\textbf{Conjecture part 2:}
+Define $\overline{F}_p^{n_k} = F_p^{n_k} \mid_{q_{k} = 0}$. \\
+
+(3.5) $F_p^{n_k} = \overline{F}_p^{n_k} - q_{k}\left((1-x_{n_{k-1}+1})\cdot \ldots \cdot (1-x_{n_k})\right) \cdot \overline{F}_{p-1}^{n_{k-1}}$.
+
 \end{document}
 
 
