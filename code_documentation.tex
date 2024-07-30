@@ -10,7 +10,7 @@
 
 \maketitle
 
-For all code testing, be sure to import the proper files (\texttt{modified\_qkcalc.txt}, \texttt{all\_working.txt}, and \texttt{QKChevTypeA.txt}). \\
+For all code testing, be sure to import the proper files (\texttt{modified\_qkcalc.txt}, \texttt{all\_working.txt}, and \texttt{QKChevTypeA.txt}, \texttt{grothendieck\_testing.txt}). \\
 
 To define a particular flag, define and specify an array, as follows
 \begin{lstlisting}[language = Maple]
@@ -19,6 +19,29 @@ local A := Array(1..3, [1, 3, 4]):
 \end{lstlisting}
 
 You will need to pass your defined flag into each function that requires an Array as a parameter to specify the partial flag you are working under.
+
+\section{Testing Quantum Grothendieck Conjectures}
+
+\section{Quantum Grothendiecks}
+    \subsection{General Commands}
+    \begin{itemize}
+        \item \texttt{qkmonk\_GP\_A\_table($F^*$)} prints the Monk/Chevalley relations for flag $F$. \textit{note: $F^*$ refers to the fact that the flag $F$ must be written with a leading zero, so $Gr(2, 4) = [0, 2, 4]$}
+        \begin{itemize}
+            \item \texttt{qkmonk\_GP\_A\_table($[0, 2, 4]$)} gives the Chevalley relations for $Gr(2, 4)$. 
+            \item imported from \texttt{QKChevTypeA.txt} code
+        \end{itemize}
+        \item \texttt{check\_relation(expr, ideal)} checks that an expression is $0$ in the given ideal
+        \item \texttt{ggp(A, perm)} returns the quantum grothendieck polynomial corresponding to perm in flag $A$
+    \end{itemize}
+    
+    \subsection{Conjecture Testing}
+    
+    \subsection{Manual Guessing}
+
+    \begin{itemize}
+        \item f\_manual, qf\_manual\_guess, qe\_bar\_guess
+    \end{itemize}
+
 
 \section{Quantum Schuberts}
 \begin{itemize}
@@ -29,17 +52,5 @@ You will need to pass your defined flag into each function that requires an Arra
     \item \texttt{qs\_pf\_basis(A)} returns the basis of quantum schuberts in the quantum cohomology of flag $A$
     \item \texttt{check\_cioFonFlag\_relations($A$)} confirms that in $A = Fl(1, 3, 4)$, quantum Schuberts match quantum Giambelli polynomials from Table 1 in Ciocan-Fontanine
 \end{itemize}
-\section{Quantum Grothendiecks}
-\begin{itemize}
-    \item \texttt{qkmonk\_GP\_A\_table($F^*$)} prints the Monk/Chevalley relations for flag $F$. \textit{note: $F^*$ refers to the fact that the flag $F$ must be written with a leading zero, so $Gr(2, 4) = [0, 2, 4]$}
-    \begin{itemize}
-        \item \texttt{qkmonk\_GP\_A\_table($[0, 2, 3]$)} gives the Chevalley relations for $Gr(2, 3)$. 
-        \item imported from \texttt{QKChevTypeA.txt} code
-    \end{itemize}
-    \item \texttt{sp(perm)} returns the quantum schubert polynomial of perm in the full flag
-    \item \texttt{\_sp(A, perm)} returns the quantum schubert polynomial corresponding to perm in flag $A$
-    \item \texttt{print\_all\_qs(A)} prints all quantum schuberts in the basis of the quantum cohomology of flag $A$
-    \item \texttt{qs\_pf\_basis(A)} returns the basis of quantum schuberts in the quantum cohomology of flag $A$
-    \item \texttt{check\_cioFonFlag\_relations($A$)} confirms that in $A = Fl(1, 3, 4)$, quantum Schuberts match quantum Giambelli polynomials from Table 1 in Ciocan-Fontanine
-\end{itemize}
+
 \end{document}
