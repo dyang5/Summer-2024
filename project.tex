@@ -394,8 +394,6 @@ and the \textbf{Grothendieck polynomial} corresponding to $w \in S_n$ can be fou
 \]
 \end{definition}
 
-Some code on computing Grothendieck polynomials in Sage: \href{https://wiki.sagemath.org/combinat/MultivariatePolynomials}{how to compute these in sage}!
-
 Note that the lowest degree homogenous part of $\mathfrak{G}_w$ is given by $\mathfrak{S}_w$ (the corresponding Schubert polynomial). 
 
 \begin{theorem}[Grothendieck Pieri, from Lenart and Maeno]
@@ -841,7 +839,7 @@ $F_p^{n_k}$ in terms of $\tau_i^j$: Recall, for a full flag, $F_p^k$ is defined 
 
 For $F_p^{n_k}$, we define it similarly: Let $a_k = (1-x_k) + \ldots + (1-x_{n_k})$. Then,  $F_p^{n_k} = Q(e_p(a_1, \ldots, a_k))$, where $e_p(a_j) = \tau_p^j$. We then define the quantization map $Q$ (of a monomial in terms of $\tau$) as follows:
 \begin{itemize}
-    \item If $\tau_i^j$ appears in a term for some $i > 0$, and $\tau_{n_{j+1} - n_j}^{j+1}$ does not appear, multiply by $(1-q_j)$. This is equivalent to our condition of having a $(1-x_{n_k})$ term from the $j^{th}$ step, and not all of the terms from the $j+1^{th}$ to $n$ steps (because $\tau_{n_{j+1} - n_j}^{j+1}$ represents a term of full degree).
+    \item If $\tau_i^j$ appears in a term for some $i > 0$, and $\tau_{n_{j+1} - n_j}^{j+1}$ does not appear, multiply by $(1-q_j)$. This is equivalent to our condition of having a $(1-x_{n_k})$ term from the $j^{th}$ step, and not all of the terms from the $j+1^{th}$ step (because $\tau_{n_{j+1} - n_j}^{j+1}$ represents a term of full degree).
 \end{itemize}
 
 \textbf{Conjecture: extension of LM recursions}
