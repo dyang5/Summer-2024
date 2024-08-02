@@ -816,7 +816,7 @@ For calculations with quantum Grothendiecks, there is the following \href{https:
 \begin{definition}
     Fix a flag $Fl(n_1,\ldots,n_l;n)$, and let $n_0 = 0$ and $n_{l+1} = n$.  We define $F_p^{n_k}$ by $F_0^{n_k} = 1$ and, for $p\geq 1$, $1 \leq l \leq n$ by
     \begin{equation*}
-        F_p^{n_k} = \sum_{\substack{I \subseteq [n_k] \\ |I| = p}} \prod_{i \in I}(1-x_i) \prod_{\substack{j \in [n] \\ [n_{j-1}+1, \ldots, n_j] \cap I \neq \emptyset \\ [n_{j}+1, \ldots, n_{l+1}] - I \neq \emptyset}}(1-q_j)
+        F_p^{n_k} = \sum_{\substack{I \subseteq [n_k] \\ |I| = p}} \prod_{i \in I}(1-x_i) \prod_{\substack{j \in [n] \\ [n_{j-1}+1, \ldots, n_j] \cap I \neq \emptyset \\ [n_{j}+1, \ldots, n_{j+1}] - I \neq \emptyset}}(1-q_j)
     \end{equation*}
 \end{definition}
 
