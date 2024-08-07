@@ -112,33 +112,33 @@
         
         
     \end{enumerate}
-    \item \textit{Question 7: } Determine conditions of $\lambda$, $\mu$ so that $\Omega_\lambda(F_\bullet) \cap \Omega_\mu(G_\bullet) = \emptyset$ (these are Schubert varieties).
-    \begin{proof}
-        Done with help from \href{https://quangvdao.github.io/schubert-calculus-minicourse/day2.pdf}{this powerpoint}, and lemma 3 on pg 148. 
+    % \item \textit{Question 7: } Determine conditions of $\lambda$, $\mu$ so that $\Omega_\lambda(F_\bullet) \cap \Omega_\mu(G_\bullet) = \emptyset$ (these are Schubert varieties).
+    % \begin{proof}
+    %     Done with help from \href{https://quangvdao.github.io/schubert-calculus-minicourse/day2.pdf}{this powerpoint}, and lemma 3 on pg 148. 
 
-        Let $U \in \Omega_\lambda(F_\bullet)$ and $U \in \Omega_\mu(G_\bullet)$. We reduce to the case of transverse flags $F$ and $\Tilde{F}$ (I don't super know why we can do this, but I think I believe we can). Then, from our definitions, we know:
-        \begin{equation*}
-            dim(U\cap F_{n+i-\lambda_i}) \geq i, 1 \leq i \leq r
-        \end{equation*}
-        \begin{equation*}
-            dim(U\cap \Tilde{F}_{n+i-\mu_i}) \geq i, 1 \leq i \leq r
-        \end{equation*}
+    %     Let $U \in \Omega_\lambda(F_\bullet)$ and $U \in \Omega_\mu(G_\bullet)$. We reduce to the case of transverse flags $F$ and $\Tilde{F}$ (I don't super know why we can do this, but I think I believe we can). Then, from our definitions, we know:
+    %     \begin{equation*}
+    %         dim(U\cap F_{n+i-\lambda_i}) \geq i, 1 \leq i \leq r
+    %     \end{equation*}
+    %     \begin{equation*}
+    %         dim(U\cap \Tilde{F}_{n+i-\mu_i}) \geq i, 1 \leq i \leq r
+    %     \end{equation*}
 
-        Then, we take condition 1 for $i$ and condition 2 for $r+1 - i$, such that:
-        \begin{equation*}
-            dim(U\cap F_{n+i-\lambda_i}) + dim(U\cap \Tilde{F}_{n+r+1-i-\mu_i}) \geq r+1-i
-        \end{equation*}
-        Since $U$ has dimension $r$ and $i + (r+1-i) - r = 1$, the intersection $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ has dimension at least 1. 
+    %     Then, we take condition 1 for $i$ and condition 2 for $r+1 - i$, such that:
+    %     \begin{equation*}
+    %         dim(U\cap F_{n+i-\lambda_i}) + dim(U\cap \Tilde{F}_{n+r+1-i-\mu_i}) \geq r+1-i
+    %     \end{equation*}
+    %     Since $U$ has dimension $r$ and $i + (r+1-i) - r = 1$, the intersection $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ has dimension at least 1. 
         
-        \ldots I don't know quite how to prove the converse here, but I think for our intersection to be empty, there must exist some $i$ for which $\lambda_i + \mu_{r+1-i} > n$.  I assume the converse proof goes something like this . . . choose some $i$ for which $\lambda_i + \mu_{r+1-i}>n$. By exercise 14, $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ is spanned by the vectors $e_j$ such that:
-        \begin{equation*}
-            i + \mu_{r+1 - i} \leq j \leq n+i-\lambda_i
-        \end{equation*}
-        But, by our condition, $-n + \lambda_i > -\mu_{r+1-i}$, and $n - \lambda_i < \mu_{r+1-i}$, such that no values of $j$ exist. So $C_i$ is spanned by \ldots no vectors! and is empty. Yay! Then there's some value of $i$ such that our two subspaces don't intersect. I guess I can believe this means they don't intersect at all? Because if they intersect in big dimensions, they must intersect in smaller dimensions and vice versa.
-    \end{proof}
-        To summarize, my condition is there exists an $i$ for which $\lambda_i + \mu_{r+1-i} > n$. \\
+    %     \ldots I don't know quite how to prove the converse here, but I think for our intersection to be empty, there must exist some $i$ for which $\lambda_i + \mu_{r+1-i} > n$.  I assume the converse proof goes something like this . . . choose some $i$ for which $\lambda_i + \mu_{r+1-i}>n$. By exercise 14, $F_{n+i-\lambda_i} \cap \Tilde{F}_{n+r+1-i-\mu_i}$ is spanned by the vectors $e_j$ such that:
+    %     \begin{equation*}
+    %         i + \mu_{r+1 - i} \leq j \leq n+i-\lambda_i
+    %     \end{equation*}
+    %     But, by our condition, $-n + \lambda_i > -\mu_{r+1-i}$, and $n - \lambda_i < \mu_{r+1-i}$, such that no values of $j$ exist. So $C_i$ is spanned by \ldots no vectors! and is empty. Yay! Then there's some value of $i$ such that our two subspaces don't intersect. I guess I can believe this means they don't intersect at all? Because if they intersect in big dimensions, they must intersect in smaller dimensions and vice versa.
+    % \end{proof}
+    %     To summarize, my condition is there exists an $i$ for which $\lambda_i + \mu_{r+1-i} > n$. \\
 
-    \textit{-Question 7b: }If $|\lambda| + |\mu| \geq k(n-k)$, find $\sigma_\lambda \cdot \sigma_\mu$.
+    % \textit{-Question 7b: }If $|\lambda| + |\mu| \geq k(n-k)$, find $\sigma_\lambda \cdot \sigma_\mu$.
 
-    $\sigma_\lambda \cdot \sigma_\mu = 0$ if $|\lambda| + |\mu| > k(n-k)$, and the coefficient is $1$ if and only if $\lambda$ and $\mu$ are complementary partitions.
+    % $\sigma_\lambda \cdot \sigma_\mu = 0$ if $|\lambda| + |\mu| > k(n-k)$, and the coefficient is $1$ if and only if $\lambda$ and $\mu$ are complementary partitions.
 \end{itemize}
